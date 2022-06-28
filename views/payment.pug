@@ -1,0 +1,101 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/style.css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+        link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pridi:wght@300&display=swap' rel='stylesheet')
+        link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+        script(src='https://kit.fontawesome.com/3f396099dd.js' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js' integrity='sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13' crossorigin='anonymous')
+        title Doctrack | Documents
+
+    body.files
+        include nav
+            form.upload--btn
+                .container 
+                    div.print-details
+                        .row 
+                            .col-5        
+                                div.pay.acc
+                                    h27.payacc Payment Method 
+                                    div(class='gcash')
+                                        input#gcash.form(type='radio' name='paymentmethod' value='gcash' checked='checked')
+                                        label.gcash(for='gcash') Gcash 
+                                    div(class='paymaya')
+                                        input#paymaya.form(type='radio' name='paymentmethod' value='paymaya')
+                                        label.paymaya(for='paymaya') Paymaya
+                                div(class='adminwallet')
+                                    div(class='topay')
+                                        h27.payacc Send your payment in this account
+                                        li
+
+                                        div(class='paymentproofno' style="font-weight: 400")
+                                            h18.payacc GCASH: 090123456789 / TUP Doctrack
+                                            li
+                                            h18.payacc PAYMAYA: 090123456789 / TUP Doctrack
+                                        ul
+                                        div(class='proofnote')
+                                            h24.note Note: After paying, please make sure to take a screenshot of your payment receipt and upload it as an image at the proof of payment. Otherwise, you won't be able to place your order. Thank you!
+                            .col-1
+                            .col-6
+                                div(class='proof')
+                                    div(class='proofimg')
+                                        h27.payacc Proof of Payment
+                                    //- div(class='a-content')
+                                    //-     h24 Please save the image of your payment receipt and upload it on the upload.
+                                input(type='file' name='inpFile' id="inpFile" style="padding-left: 30px;")
+                                div(class='image-preview' id='imagePreview') 
+                                    img(src='' alt='Image Preview' class='image-preview__image')
+                                    span(class='image-preview__default-text') Image Preview  
+                        .line.summary
+                        div.OrderSummary
+                            div.header
+                                h27 Order Summary 
+                            table.table-bordered
+                                thead.summary
+                                    tr.summary 
+                                        th.summary(class="w-60") File
+                                        th.summary(class="w-20") Price
+                                        //- Price = paper + color
+                                        th.summary(class="w-20") Qty of Pages
+                                        th.summary(class="w-20") Number of Copies
+                                        th.summary(class="w-20") Paper's side
+                                        //- Front side = x1, front&back = x2
+                                        th.summary(class="w-20") Total
+
+                                    tr.summary 
+                                        td.summary File Name
+                                        td.summary 5
+                                        td.summary 20
+                                        td.summary x2
+                                        td.summary x2 
+                                        td.summary Php 400
+
+                                    //- tr.summary 
+                                    //-     td.summary #{file.namefile}
+                                    //-     td.summary 5
+                                    //-     td.summary #{file.pages}
+                                    //-     td.summary x#{file.copies}
+                                    //-     td.summary #{file.side}
+                                    //-     td.summary Php 400
+
+                                    tr.summary 
+                                        td.summary(colspan="5") Total 
+                                        td.summary Php 400
+                        div.box
+                            div.box_content
+
+                                //- button.button11.btn.btn-primary.btn-lg(type='submit', value='Submit') Proceed to Payment
+                        a.back3(href='/documents' class='previous') &#8249; Back
+                        button.payorder(type='submit') Place Order
+
+
+        script
+            include script.js
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js')
+        //- script(src='/js/login.js')
+        script(src='/js/bundle.js')

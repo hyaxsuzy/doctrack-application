@@ -1,0 +1,273 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='/css/style.css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+        link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pridi:wght@300&display=swap' rel='stylesheet')
+        link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+        script(src='https://kit.fontawesome.com/3f396099dd.js' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js' integrity='sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13' crossorigin='anonymous')
+        title Doctrack | Documents
+
+    body.body.files
+        include nav
+            form.form-file-data
+                .container 
+                    div.order-details
+                        h28 Order Details
+                        h29 Upload File
+                        .row 
+                            .col-4
+
+                                div.Title
+                                    h18 Time of Pick-Up:
+                                div.a-content
+                                    h24 Please select the preferred time of pick up.
+                                    input#pickup.form-control(type='time' value='')
+
+                                div.Title
+                                    h18 Type of Paper:
+                                div.a-content
+                                    h24 Please select the type of paper to be used. 
+                                div.selection
+                                    //- h17 TYPE OF PAPER 
+                                    ul
+                                    select#type.select(name='type' onchange='calculateAmount()')
+                                        option(value='0' disabled selected)
+                                        option(value='3') Plain Bond Paper
+                                        option(value='7') Glossy Paper
+                                        option(value='10') Laser Paper
+                                //- New
+                                div.Title
+                                    h18 Size of Paper:
+                                div.a-content
+                                    h24 Please select the size of paper to be used.
+                                div.selection
+                                    //- h17 SIZE OF PAPER
+                                    ul
+                                    select#size.select
+                                        option(selected="selectedvalue") 
+                                        option Letter
+                                        option Legal
+                                        option A3 
+                                        option A4 
+                                        option A5
+                                        option A6
+
+                                div.Title
+                                    h18 No. of pages on the document:    
+                                    input#pages.pageqty(type='number' value='')                       
+
+                                //- div.Title
+                                //-     h18 Page Side:
+                                //- div.a-content
+                                //-     h24 Please select the side of the page to print.
+                                //- div.selection
+                                //-     //- h17 TYPE OF FINISH
+                                //-     ul
+                                //-     select#finish.select
+                                //-         option(selected="selectedvalue") 
+                                //-         option Print One Sided
+                                //-         option Print on Both Sides
+
+                                //- div.Title
+                                //-     h18 Page/s to Print:
+                                //- div.a-content
+                                //-     h24 Please select the page numbers to print.
+                                //- div.selection
+                                //-     //- h17 TYPE OF FINISH
+                                //-     ul
+                                //-     select#finish.select
+                                //-         option(selected="selectedvalue") 
+                                //-         option Print All Page
+                                //-         option Print Current Page
+                                //-         option Custom Print
+
+                            .col-4
+                                //- div.Title
+                                //-     h18 Page/s per Sheet:
+                                //- div.a-content
+                                //-     h24 Please select the number of pages on sheet.
+                                //- div.selection
+                                //-     //- h17 SIZE OF PAPER
+                                //-     ul
+                                //-     select#size.select
+                                //-         option(selected="selectedvalue")
+                                //-         option 1 page per sheet
+                                //-         option 2 pages per sheet
+                                //-         option 4 pages per sheet
+                                //-         option 6 pages per sheet
+                                //-         option 8 pages per sheet
+                                //-         option 16 pages per sheet
+                                div.Title
+                                    h18 Page Side:
+                                div.a-content
+                                    h24 Please select the side of the page to print.
+                                div.selection
+                                    //- h17 TYPE OF FINISH
+                                    ul
+                                    select#side.select(name='side' onchange='calculateAmount()')
+                                        option(value='0' disabled selected) 
+                                        option(value='1') Print One Sided
+                                        option(value='2') Print on Both Sides
+
+                                div.Title
+                                    h18 Orientation:
+                                div.a-content
+                                    h24 Please select the orientation of the paper.
+                                div.selection
+                                    //- h17 SIZE OF PAPER
+                                    ul
+                                    select#orientation.select
+                                        option(selected="selectedvalue")  
+                                        option Portrait 
+                                        option Landscape
+
+                                div.Title
+                                    h18 Color:
+                                div.a-content
+                                    h24 Please select the size of paper to be used.
+                                div.selection
+                                    //- h17 TYPE OF COLOR
+                                    ul
+                                    select#color.select(name='color' onchange='calculateAmount()')
+                                        option(value='0' disabled selected) 
+                                        option(value='1') Black and White
+                                        option(value='2') Colored
+
+                                div.Title
+                                    h18 Number of Copies:    
+                                    input#copies.copiesnumber(type='number' name='copies' step='1' min='1' max='499' onchange='calculateAmount()')
+
+                            .col-4
+                                .custom-file.mb-3
+                                    label.uploadfile(for='file' class='form-label') 
+                                    input#file(class='form-control form-control-lg', name='file', type='file')
+
+                                div(class='namefile')
+                                    div(class='pickup')
+                                        h18 Add a filename
+                                    div(class='a-content')
+                                        h24 Please indicate its filename.
+                                        ul
+                                        input#namefile(class='namefile')
+
+                                div(class='note')
+                                    div(class='pickup')
+                                        h18 Add a Note
+                                    div(class='a-content')
+                                        h24 Please type instructions to the admin.
+                                        ul
+                                        input#note(class='note')
+
+                                //- .line.summary
+                                //- div.OrderSummary
+                                //-     div.header
+                                //-         h27 Order Summary 
+                                //-     table.table-bordered
+                                //-         thead.summary
+                                //-             tr.summary 
+                                //-                 th.summary File
+                                //-                 th.summary(class="w-20") Price
+                                //-                 //- Price = paper + color
+                                //-                 th.summary(class="w-20") Qty of Pages
+                                //-                 th.summary(class="w-20") Number of Copies
+                                //-                 th.summary(class="w-20") Paper's side
+                                //-                 //- Front side = x1, front&back = x2
+                                //-                 th.summary(class="w-20") Total
+
+                                //-             tr.summary 
+                                //-                 td.summary File Name
+                                //-                 td.summary 5
+                                //-                 td.summary 20
+                                //-                 td.summary x2
+                                //-                 td.summary x2 
+                                //-                 td.summary Php 400
+
+                                //-             tr.summary 
+                                //-                 td.summary(colspan="5") Total 
+                                //-                 td.summary Php 400
+                                //- div.box
+                                //-     div.box_content
+                            
+                            //- New
+                               
+
+                                //-     button.next(class='next' type='submit') Place Order
+                                //- a.back(href='/documents' class='previous') &#8249; Back          
+                            //- .col-2  
+
+                                //- button.button11.btn.btn-primary.btn-lg(type='submit', value='Submit') Proceed to Payment
+                                //- a.button10.btn.btn-primary.btn-lg(href='/documents' id='cancel' name='cancel') Go back to Files
+                            //- .col-6
+                            //-     div(class='adminwallet')
+                            //-         div(class='topay')
+                            //-             h27 Send your payment in this account
+                                        
+                            //-             div(class='a-content' style="font-weight: 500")
+                            //-                 h18 90123456789 / TUP Doctrack
+                            //-                 li
+                                
+                            //-     div(class='proof')
+                            //-         div(class='proofimg')
+                            //-             h27 Proof of Payment
+                            //-         div(class='a-content')
+                            //-             h24 Please save the image of your payment receipt and upload it below.
+                            //-     .cupstom-file.mb-3
+                            //-         label.uploadfile(for='file' class='form-label') 
+                            //-         //- input#file(class='form-control form-control-lg', name='file', type='file')
+                            //-         input#payment(class='form-control form-control-lg', type='file', accept='image/*', name='payment')   
+                        
+                        .line.summary
+                        div.OrderSummary
+                            div.header
+                                h27 Order Summary 
+                            table.table-bordered
+                                thead.summary
+                                    tr.summary 
+                                        th.summary(class="w-60") File
+                                        th.summary(class="w-20") Price
+                                        //- Price = paper + color
+                                        th.summary(class="w-20") Qty of Pages
+                                        th.summary(class="w-20") Number of Copies
+                                        th.summary(class="w-20") Paper's side
+                                        //- Front side = x1, front&back = x2
+                                        th.summary(class="w-20") Total
+
+                                    tr.summary 
+                                        td.summary File Name
+                                        td.summary 
+                                            input(type='text' id='price_type' name='price_type')
+                                        td.summary 20
+                                        td.summary x2
+                                        td.summary x2 
+                                        td.summary Php 
+                                            input#tot_amount(name='tot_amount' type='text' readonly)
+
+                                    //- tr.summary 
+                                    //-     td.summary #{file.namefile}
+                                    //-     td.summary 5
+                                    //-     td.summary #{file.pages}
+                                    //-     td.summary x#{file.copies}
+                                    //-     td.summary #{file.side}
+                                    //-     td.summary Php 400
+
+                                    tr.summary 
+                                        td.summary(colspan="5") Total 
+                                        td.summary Php 400
+                        div.box
+                            div.box_content
+
+                        
+                        a.back(href='/documents' class='previous') &#8249; Back    
+                        button.ptopay(type='submit') Payment         
+
+        script
+            include script.js
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js')
+        //- script(src='/js/login.js')
+        script(src='/js/bundle.js')

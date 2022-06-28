@@ -1,0 +1,329 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='css/style.css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+        link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pridi:wght@300&display=swap' rel='stylesheet')
+        link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+        script(src='https://kit.fontawesome.com/3f396099dd.js' crossorigin='anonymous')
+        //- link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
+        script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js' integrity='sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13' crossorigin='anonymous')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        title Doctrack | Dashboard 
+
+    body.body
+        include nav1
+            main.dashboard
+                div(class="current-datetime" id='initClock()')
+                    div(class="date")
+                        span(id="dayname") Day
+                        span , 
+                        span(id="month") Month
+                        span  
+                        span(id="daynum") 00
+                        span , 
+                        span(id="year")  Year
+                    div(class="time")
+                        span(id="hour") 00
+                        span :
+                        span(id="minutes")  00
+                        span :
+                        span(id="seconds")  00
+                        span(id="period")  AM
+                .row
+                    .col-md-6.no-gutters
+                        .left
+                            .order-section 
+                                h1.t Customers
+                            div(class="insights")
+                                .col-12   
+                                    class(type="customers")
+                                        h5.customer Number of Users  
+                                            i.fa-solid.fa-user
+                                        small(class="text-muted") Total number of registered users as of today
+                                        div(class="middle")
+                                            h6.customers #{numUsers}
+                    .col-md-6.no-gutters
+                        .left
+                            .topuser
+                                div(class="insights")
+                                    .col-12   
+                                        class(type="customers")
+                                            h5.customer Top User 
+                                                i.fa-solid.fa-star
+                                            small(class="text-muted") Customer with the most order
+                                            div(class="middle")
+                                                h6.topcustomers Franchesca Habing
+                .row.no-gutters
+                    .col-md-12.no-gutters
+                        div(class="customers-grid")
+                            div(class="projects")
+                                div(class="card")
+                                    div(class="card-header")
+                                        h1.dashb Recent Users
+                                        button.users
+                                            a(href="/all-users" style="text-decoration:none; color: white;") See all
+
+                                    div(class="card-body")
+                                        table.userstable(width="100%")
+                                            thead.userstable
+                                                tr.userstable
+                                                    th.userstable(class="w-60") Name
+                                                    th.userstable(class="w-60") Email
+                                                    th.userstable(class="w-20") Date Registered
+                                            tbody.userstable  
+                                                each user in users 
+                                                    tr.userstable 
+                                                        td.userstable(class="w-60")= user.name
+                                                        td.userstable(class="w-60")= user.email
+                                                        td.userstable(class="w-20")= moment(user.createdAt).format('YYYY-MM-DD')
+
+                .row
+                    .col-md-4.no-gutters
+                        .left
+                            .order-section 
+                                h1.t Orders
+                            .row 
+                                .col-6
+
+                                    //- li
+                                    //-     small(class="text-muted") As of today
+                                    div(class="insights")
+                                        .col-9   
+                                            class(type="orders")
+
+                                                //- i.fa-solid.fa-user
+                                                div(class="middle")
+                                                    h5 Total Orders
+                                                    small(class="text-muted") As of today
+                                                    h6.customers1(style="color: #A02525") #{numFiles}
+
+                                        .col-9 
+                                            class(type="completed")
+                                                //- i.fa-solid.fa-chart-column
+                                                div(class="middle")
+                                                    h5 Completed 
+                                                    small(class="text-muted") As of today
+                                                    h6.customers1(style="color: #A02525") #{completed}
+
+                                .col-6
+
+                                    //- li
+                                    //-     small(class="text-muted") As of today
+                                    div(class="insights")
+                                        .col-9  
+                                            class(type="pending")
+
+                                                //- i.fa-solid.fa-user
+                                                div(class="middle")
+                                                    h5 Pending 
+                                                    small(class="text-muted") As of today
+                                                    h6.customers1(style="color: #A02525") #{placed}
+
+                                        .col-9 
+                                            class(type="Rejected")
+                                                //- i.fa-solid.fa-chart-column
+                                                div(class="middle")
+                                                    h5 Rejected 
+                                                    small(class="text-muted") As of today
+                                                    h6.customers1(style="color: #A02525") #{rejected}
+                    .col-md-8.no-gutters
+                        .right
+                            div.orderchart(class="charts")
+                                div.orderchart(class="chart")
+                                    h1.dashb Number of Orders Completed
+                                    canvas(id='lineChart' width="400" height="297") 
+                                        //- h6.customers #{completed}
+                .row.no-gutters
+                    .col-md-12.no-gutters
+                        div(class="recent-grid")
+                            div(class="projects")
+                                div(class="card")
+                                    div(class="card-header")
+                                        h1.dashb Recent Orders
+                                        button.orders
+                                            a(href="/documents" style="text-decoration:none; color: white;") See all
+
+                                    div(class="card-body")
+                                        table.orders(width="100%")
+                                            thead.orders 
+                                                tr.orders 
+                                                    th.orders Order No 
+                                                    th.orders Customer Name 
+                                                    th.orders Date of Order
+                                                    th.orders Payment Status
+                                                    th.orders Order Status
+                                                    th.orders Amount
+                                            tbody.orders  
+                                                each file in files
+                                                    tr.orders 
+                                                        td.orders #{file._id}
+                                                        td.orders= user.name
+                                                        td.orders= moment(file.createdAt).format('hh:mm A')
+                                                        td.orders #{file.stats}
+                                                        td.orders 
+                                                            - if (file.status === 'Placed')
+                                                                span.badge.rounded-pill.bg-primary= file.status
+                                                            - else if (file.status === 'Confirmed')
+                                                                span.badge.rounded-pill.bg-info.text-dark= file.status
+                                                            - else if (file.status === 'Rejected')
+                                                                span.badge.rounded-pill.bg-danger= file.status
+                                                            - else if (file.status === 'Prepared')
+                                                                span.badge.rounded-pill.bg-warning.text-dark= file.status
+                                                            - else if (file.status === 'Completed')
+                                                                span.badge.rounded-pill.bg-success= file.status
+                                                        td.orders PHP50
+                                                        td.orders
+                                                            a.orderd(href=`/file-info1/${file._id}`) Receipt
+                .row.no-gutters
+                    .col-md-12.no-gutters
+                        .order-section 
+                            h1.t Products 
+                            div(class="recent-grid")
+                                div(class="card")
+                                    div(class="card-header")
+                                        h1.dashb Papers
+                                        button.orders
+                                            a(href="/products" style="text-decoration:none; color: white;") See all
+
+                                    div(class="card-body")
+                                        table.orders(width="100%")
+                                            thead.orders 
+                                                tr.orders 
+                                                    th.orders(class="w-60") Paper Type 
+                                                    th.orders(class="w-60") Paper Size
+                                                    th.orders(class="w-60") Color
+                                                    th.orders(class="w-20") Price
+                                                    th.orders(class="w-20") Stocks
+                                            tbody.orders  
+                                                each file in files
+                                                    tr.orders 
+                                                        td.orders Plain Bond Paper
+                                                        td.orders A4
+                                                        td.orders Black&White
+                                                        td.orders PHP5
+                                                        td.orders 500 
+
+                //- .row.no-gutters
+                //-     .col-md-4.no-gutters
+                //-         .left
+                //-             .order-section 
+                //-                         h1.t Orders
+                //-             .row 
+                //-                 .col-6
+
+                //-                                 //- li
+                //-                                 //-     small(class="text-muted") As of today
+                //-                                 div(class="insights")
+                //-                                     .col-9   
+                //-                                         class(type="orders")
+
+                //-                                             //- i.fa-solid.fa-user
+                //-                                             div(class="middle")
+                //-                                                 h5 Total Orders
+                //-                                                 h6.customers1(style="color: #A02525") 50
+
+                //-                                     .col-9 
+                //-                                         class(type="completed")
+                //-                                             //- i.fa-solid.fa-chart-column
+                //-                                             div(class="middle")
+                //-                                                 h5 Completed 
+                //-                                                 h6.customers1(style="color: #A02525") 45
+
+                //-                 .col-6
+
+                //-                                 //- li
+                //-                                 //-     small(class="text-muted") As of today
+                //-                                 div(class="insights")
+                //-                                     .col-9  
+                //-                                         class(type="pending")
+
+                //-                                             //- i.fa-solid.fa-user
+                //-                                             div(class="middle")
+                //-                                                 h5 Pending Orders
+                //-                                                 h6.customers1(style="color: #A02525") 5
+
+                //-                                     .col-9 
+                //-                                         class(type="Rejected")
+                //-                                             //- i.fa-solid.fa-chart-column
+                //-                                             div(class="middle")
+                //-                                                 h5 Rejected Orders
+                //-                                                 h6.customers1(style="color: #A02525") 0
+                //-     .col-md-7.no-gutters
+                //-         .right
+                //-             div(class="charts")
+                //-                 div(class="chart")
+                //-                     h1.dashb Number of Orders Completed
+                //-                     canvas(id='lineChart')
+
+                //- .row.no-gutters
+                //-     .col-md-3.no-gutters
+                //-         .left
+                //-             //- h1.dashb Overview
+
+                //-             //- div(class="date")
+                //-             //-     input(type="date")
+
+                //-             div(class="insights")
+                //-                 .col-10   
+                //-                     class(type="customers")
+                //-                         h5 Customers  
+                //-                         i.fa-solid.fa-user
+                //-                         div(class="middle")
+                //-                             h6.customers #{numUsers}
+                //-                 hr
+
+                //-                 .col-10 
+                //-                     class(type="sales")
+                //-                         i.fa-solid.fa-chart-column
+                //-                         div(class="middle")
+                //-                             h5 Total Sales  
+                //-                             h6.customers1 ₱1,000
+                //-                         small(class="text-muted") Last 24 hours
+
+                //-                 .col-10   
+                //-                     class(type="income")
+                //-                         i.fa-solid.fa-chart-line
+                //-                         div(class="middle")
+                //-                             h5 Total Income  
+                //-                             h6.customers1 ₱2,000
+                //-                         small(class="text-muted") Last 24 hours
+                //-     .col-md-9.no-gutters
+                //-         .right-orders
+                //-             div(class="recent-grid")
+                //-                 div(class="projects")
+                //-                     div(class="card")
+                //-                         div(class="card-header")
+                //-                             h1.dashb Recent Orders
+                //-                             button.orders
+                //-                                 a(href="/documents" style="text-decoration:none; color: white;") See all
+
+                //-                         div(class="card-body")
+                //-                             table.orders(width="100%")
+                //-                                 thead.orders 
+                //-                                     tr.orders 
+                //-                                         th.orders Order Number 
+                //-                                         th.orders Price
+                //-                                         th.orders Payment 
+                //-                                         th.orders Status
+                //-                                 tbody.orders  
+                //-                                     each file in files
+                //-                                         tr.orders 
+                //-                                             td.orders #{file._id}
+                //-                                             td.orders 123456
+                //-                                             td.orders Paid
+                //-                                             td 
+                //-                                                 span.badge.rounded-pill.bg-primary #{file.status}
+                //-                                             td.orders
+                //-                                                 a.orderd(href=`/file-info1/${file._id}`) Details
+
+        script
+            include script.js
+        script(src='/js/bundle.js')
+        script(src='/js/updateClock.js')
+        script(src='https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js')
+        //- script(src='chart1.js')
