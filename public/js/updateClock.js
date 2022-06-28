@@ -1,4 +1,5 @@
 /* eslint-disable */
+// this is a comment
 // const updateClock = document.getElementById('updateClock');
 const initClock = document.getElementById('initClock');
 
