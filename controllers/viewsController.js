@@ -300,7 +300,7 @@ exports.getDash = catchAsync(async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "script-src 'self' https://*.jsdelivr.net https://*.fontawesome.com https://*.googleapis.com 'unsafe-inline' 'unsafe-eval';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';"
     )
     .render('dash', {
       route: 'DASHBOARD',
@@ -332,7 +332,7 @@ exports.getProd = (req, res) => {
       "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('products', {
-      route: 'PRODUCTS',
+      route: 'PRODUCTS'
     });
 };
 
@@ -344,7 +344,7 @@ exports.getStats = (req, res) => {
       "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('statistics', {
-      route: 'STATISTICS',
+      route: 'STATISTICS'
     });
 };
 
@@ -356,6 +356,6 @@ exports.getRep = (req, res) => {
       "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('rep', {
-      route: 'REPORT',
+      route: 'REPORT'
     });
 };
