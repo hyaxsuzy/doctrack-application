@@ -12236,6 +12236,34 @@ var verifyBtn = document.querySelector('.verify--email');
 var orderStatsForm = document.querySelector('.order--stats');
 var downloadBtn = document.querySelector('.dl--btn');
 var uploadProofBtn = document.querySelector('.upload--btn');
+var inpFile = document.getElementById('inpFile');
+var previewContainer = document.getElementById('imagePreview');
+var previewImage, previewDefaultText;
+
+if (previewContainer) {
+  previewImage = previewContainer.querySelector('.image-preview__image');
+  previewDefaultText = previewContainer.querySelector('.image-preview__default-text'); // DELEGATION
+}
+
+if (inpFile) {
+  inpFile.addEventListener('change', function () {
+    var file = this.files[0];
+
+    if (file) {
+      var reader = new FileReader();
+      previewDefaultText.style.display = 'none';
+      previewImage.style.display = 'block';
+      reader.addEventListener('load', function () {
+        previewImage.setAttribute('src', this.result);
+      });
+      reader.readAsDataURL(file);
+    } else {
+      previewDefaultText.style.display = null;
+      previewImage.style.display = null;
+      previewImage.setAttribute('src', '');
+    }
+  });
+} // DELEGATION
 
 
 if (loginForm) loginForm.addEventListener('submit', function (e) {
@@ -12407,7 +12435,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55043" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55762" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
