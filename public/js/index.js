@@ -144,11 +144,14 @@ if (uploadFileForm)
   });
 
 if (uploadProofBtn)
-  uploadProofBtn.addEventListener('submit', e => {
+  uploadProofBtn.addEventListener('submit', (e, values) => {
     e.preventDefault();
     const form = new FormData();
-    form.append('payment', document.getElementById('payment').files[0]);
-    form.append('paymode', document.getElementById('paymode').value);
+    form.append('payment', document.getElementById('inpFile').files[0]);
+    form.append(
+      'paymode',
+      document.querySelector('input[name="paymentmethod"]:checked').value
+    );
     uploadProof(form, 'ecash');
   });
 

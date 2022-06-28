@@ -12358,11 +12358,11 @@ if (uploadFileForm) uploadFileForm.addEventListener('submit', function (e) {
 
   (0, _uploadFile.uploadFile)(form, 'datafile');
 });
-if (uploadProofBtn) uploadProofBtn.addEventListener('submit', function (e) {
+if (uploadProofBtn) uploadProofBtn.addEventListener('submit', function (e, values) {
   e.preventDefault();
   var form = new FormData();
-  form.append('payment', document.getElementById('payment').files[0]);
-  form.append('paymode', document.getElementById('paymode').value);
+  form.append('payment', document.getElementById('inpFile').files[0]);
+  form.append('paymode', document.querySelector('input[name="paymentmethod"]:checked').value);
   (0, _payment.uploadProof)(form, 'ecash');
 });
 if (forgotPwBtn) forgotPwBtn.addEventListener('submit', function (e) {
