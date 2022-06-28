@@ -95,7 +95,7 @@ exports.getPrices = (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('prices', {
       route: 'PRINT GUIDE'
@@ -123,7 +123,7 @@ exports.getAbout = (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('about', {
       route: 'DOCTRACK'
@@ -145,7 +145,7 @@ exports.getTermsNCondi = (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('termsncondi', {
       route: 'DOCTRACK'
@@ -228,7 +228,7 @@ exports.getSettings = (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('settings', {
       route: 'DOCTRACK'
