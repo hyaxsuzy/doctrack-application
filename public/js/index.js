@@ -26,6 +26,32 @@ const verifyBtn = document.querySelector('.verify--email');
 const orderStatsForm = document.querySelector('.order--stats');
 const downloadBtn = document.querySelector('.dl--btn');
 const uploadProofBtn = document.querySelector('.upload--btn');
+var inpFile = document.getElementById("inpFile");
+var previewContainer = document.getElementById("imagePreview");
+var previewImage = previewContainer.querySelector(".image-preview__image");
+var previewDefaultText = previewContainer.querySelector(".image-preview__default-text"); // DELEGATION
+
+
+if (inpFile) {
+  inpFile.addEventListener("change", function () {
+    var file = this.files[0];
+
+    if (file) {
+      var reader = new FileReader();
+      previewDefaultText.style.display = "none";
+      previewImage.style.display = "block";
+      reader.addEventListener("load", function () {
+        console.log(this.result);
+        previewImage.setAttribute("src", this.result);
+      });
+      reader.readAsDataURL(file);
+    } else {
+      previewDefaultText.style.display = null;
+      previewImage.style.display = null;
+      previewImage.setAttribute("src", "");
+    }
+  });
+}
 
 // DELEGATION
 if (loginForm)
