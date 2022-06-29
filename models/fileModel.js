@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 // Creating a Schema for uploaded files
 const fileSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.ObjectId
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
   },
   // proof: {
   //   type: mongoose.Schema.ObjectId
@@ -77,6 +78,12 @@ const fileSchema = new mongoose.Schema({
 
 // fileSchema.index({ price: 1 });
 // fileSchema.index({ slug: 1 });
+
+fileSchema.pre(/^find/, function(next) {
+  this.populate('user', 'name');
+
+  next();
+});
 
 const File = mongoose.model('File', fileSchema);
 

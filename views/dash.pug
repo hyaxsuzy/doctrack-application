@@ -162,7 +162,7 @@ html
                                                 each file in files
                                                     tr.orders 
                                                         td.orders #{file._id}
-                                                        td.orders= user.name
+                                                        td.orders= file.user.name
                                                         td.orders= moment(file.createdAt).format('hh:mm A')
                                                         td.orders #{file.stats}
                                                         td.orders 
