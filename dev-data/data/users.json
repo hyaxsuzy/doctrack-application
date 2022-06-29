@@ -1,0 +1,42 @@
+[
+    {
+        "_id": "626257062c91373dcce9a776",
+        "name": "Administrator",
+        "email": "admin@doctrack.io",
+        "contact": "09770634633",
+        "role": "admin",
+        "active": true,
+        "photo": "tup.png",
+        "password": "$2a$12$lBfRoPdTPl98LGBKjo6KrOst1IgdGPecbxVk/DJeaDm38UFTnFJza"
+    },
+    {
+        "_id": "626257332c91373dcce9a779",
+        "name": "Charles Dermil",
+        "email": "charles@example.com",
+        "contact": "09770458835",
+        "role": "user",
+        "active": true,
+        "photo": "user1.jpg",
+        "password": "$2a$12$G6Swlwg1FEwop6XD4mw71elOee1yq8rEnCh9tplGfCuboULibzveC"
+    },
+    {
+        "_id": "626257472c91373dcce9a77c",
+        "name": "Shane Santiago",
+        "email": "shane@example.com",
+        "contact": "09179608960",
+        "role": "user",
+        "active": true,
+        "photo": "user3.jpg",
+        "password": "$2a$12$ARwlO8sQyfvX0jx6kunFJ.RS9nJ3bIlNSRi/blbn.ibYRuq69Y3vK"
+    },
+    {
+        "_id": "626257672c91373dcce9a77f",
+        "name": "Franchesca Habing",
+        "email": "chesca@example.com",
+        "contact": "09457741204",
+        "role": "user",
+        "active": true,
+        "photo": "user2.jpg",
+        "password": "$2a$12$R3S9cjn.VSfeZfeWHXBXNe/uIrJUIdMLK1OD1kToejK1I45ClrIc6"
+    }
+]
