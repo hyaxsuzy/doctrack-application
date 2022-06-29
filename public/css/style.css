@@ -1105,7 +1105,7 @@ h33.log {
     text-align: center;
     border: var(--border);
     padding: 2rem;
-
+    /* color: rgb(209, 12, 12); */
 }
 
 .box-container .box .image {
@@ -4054,20 +4054,19 @@ h37{
 
 /* Dash Datetime */
 
-.current-datetime{
+.current-datetime {
     /* color: #fff; */
     /* background: #A02525; */
     border: 3px solid #A02525;
     font-family: "Segoe UI", sans-serif;
-    width: 300px;
+    width: 350px;
     padding: 10px 20px;
     border-radius: 5px;
-    margin-left: 78.7%;
+    margin-left: 75.5%;
     margin-bottom: -65px;
     transition: 0.5s;
     /* transition-property: background, box-shadow; */
 }
-
 .current-datetime:hover{
     color: #fff;
     background: #A02525;
@@ -4111,3 +4110,14 @@ h34.cust-name {
     /* letter-spacing: 3px; */
     font-family: "Segoe UI", sans-serif;
 }
+
+
+/* mobile view */
+
+/* @media(max-width:1060px){
+    table.table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+} */
