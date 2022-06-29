@@ -13,6 +13,7 @@ html
         script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous')
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js' integrity='sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13' crossorigin='anonymous')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js')
         title Doctrack | Dashboard 
 
     body.body
@@ -137,7 +138,7 @@ html
                                 div.orderchart(class="chart")
                                     h1.dashb Number of Orders Completed
                                     canvas(id='lineChart' width="400" height="297") 
-                                        //- h6.customers #{completed}
+                                    
                 .row.no-gutters
                     .col-md-12.no-gutters
                         div(class="recent-grid")
@@ -326,4 +327,4 @@ html
         script(src='/js/bundle.js')
         script(src='/js/updateClock.js')
         script(src='https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js')
-        //- script(src='chart1.js')
+        script(src='/js/ordersChart.js')
