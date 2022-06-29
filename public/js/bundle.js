@@ -12387,10 +12387,15 @@ if (orderStatsForm) orderStatsForm.addEventListener('submit', function (e) {
 
   while (true) {
     var status = document.getElementById("status".concat(index));
-    var stats = document.getElementById("stats".concat(index));
     if (!status) break;
     statusArray = [].concat(_toConsumableArray(statusArray), [status.value]);
     index++;
+  }
+
+  index = 0;
+
+  while (true) {
+    var stats = document.getElementById("stats".concat(index));
     if (!stats) break;
     statsArray = [].concat(_toConsumableArray(statsArray), [stats.value]);
     index++;

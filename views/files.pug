@@ -95,7 +95,7 @@ html
                                     tbody 
                                         each file, index in files 
                                             tr
-                                                td user name
+                                                td= file.user.name
                                                 td
                                                     a(href=`/file-info1/${file._id}` style="text-decoration: none")= file.namefile
                                                 td

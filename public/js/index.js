@@ -181,15 +181,22 @@ if (orderStatsForm)
     let index = 0;
     while (true) {
       const status = document.getElementById(`status${index}`);
-      const stats = document.getElementById(`stats${index}`);
+
       if (!status) break;
       statusArray = [...statusArray, status.value];
       index++;
+    }
+
+    index = 0;
+
+    while (true) {
+      const stats = document.getElementById(`stats${index}`);
 
       if (!stats) break;
       statsArray = [...statsArray, stats.value];
       index++;
     }
+
     orderStatus(statusArray, statsArray);
   });
 

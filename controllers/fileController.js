@@ -66,7 +66,7 @@ exports.getDownload = async (req, res, next) => {
       console.log('Download complete');
     }
   });
-  
+
   // const fileStream = fs.createWriteStream('doctrack-file.pdf');
   // const request = http.get(`http://127.0.0.1:3000/${file.file}`, function(
   //   response
@@ -119,6 +119,7 @@ exports.updateAllStats = async (req, res, next) => {
 
   files.forEach(async (file, index) => {
     file.status = req.body.statusArray[index];
+    file.stats = req.body.statsArray[index];
     await file.save({ validateBeforeSave: false });
   });
 
