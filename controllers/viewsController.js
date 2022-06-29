@@ -180,7 +180,7 @@ exports.proofPayment = async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-0XdFfytbL1xDomHYzFdvDONhuGRRWt8KqBoc8UE5RQI=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('payment', {
       route: 'UPLOAD FILE',

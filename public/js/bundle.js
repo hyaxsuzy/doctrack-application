@@ -12235,7 +12235,11 @@ var resetPwBtn = document.querySelector('.reset--pass');
 var verifyBtn = document.querySelector('.verify--email');
 var orderStatsForm = document.querySelector('.order--stats');
 var downloadBtn = document.querySelector('.dl--btn');
-var uploadProofBtn = document.querySelector('.upload--btn'); // DELEGATION
+var uploadProofBtn = document.querySelector('.upload--btn'); var inpFile = document.getElementById("inpFile");
+var previewContainer = document.getElementById("imagePreview");
+var previewImage = previewContainer.querySelector(".image-preview__image");
+var previewDefaultText = previewContainer.querySelector(".image-preview__default-text"); // DELEGATION
+
 
 if (loginForm) loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
