@@ -47,10 +47,10 @@ html
                                         h27.payacc Proof of Payment
                                     //- div(class='a-content')
                                     //-     h24 Please save the image of your payment receipt and upload it on the upload.
-                                input#payment(type='file' name='payment' style="padding-left: 30px;")
+                                input(type='file' name='inpFile' id="inpFile" style="padding-left: 30px;")
                                 div(class='image-preview' id='imagePreview') 
                                     img(src='' alt='Image Preview' class='image-preview__image')
-                                    span(class='image-preview__default-text') Image Preview   
+                                    span(class='image-preview__default-text') Image Preview  
                         .line.summary
                         div.OrderSummary
                             div.header

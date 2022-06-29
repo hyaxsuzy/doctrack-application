@@ -12235,7 +12235,8 @@ var resetPwBtn = document.querySelector('.reset--pass');
 var verifyBtn = document.querySelector('.verify--email');
 var orderStatsForm = document.querySelector('.order--stats');
 var downloadBtn = document.querySelector('.dl--btn');
-var uploadProofBtn = document.querySelector('.upload--btn'); var inpFile = document.getElementById("inpFile");
+var uploadProofBtn = document.querySelector('.upload--btn'); 
+var inpFile = document.getElementById("inpFile");
 var previewContainer = document.getElementById("imagePreview");
 var previewImage = previewContainer.querySelector(".image-preview__image");
 var previewDefaultText = previewContainer.querySelector(".image-preview__default-text"); // DELEGATION
@@ -12364,7 +12365,28 @@ if (orderStatsForm) orderStatsForm.addEventListener('submit', function (e) {
   }
 
   (0, _status.orderStatus)(statusArray);
-}); // // togglePassword
+}); 
+if (inpFile) {
+  inpFile.addEventListener("change", function () {
+    var file = this.files[0];
+
+    if (file) {
+      var reader = new FileReader();
+      previewDefaultText.style.display = "none";
+      previewImage.style.display = "block";
+      reader.addEventListener("load", function () {
+        console.log(this.result);
+        previewImage.setAttribute("src", this.result);
+      });
+      reader.readAsDataURL(file);
+    } else {
+      previewDefaultText.style.display = null;
+      previewImage.style.display = null;
+      previewImage.setAttribute("src", "");
+    }
+  });
+}
+// // togglePassword
 // if (togglePassword) {
 //   togglePassword.addEventListener('click', function(e) {
 //     const type =
@@ -12410,7 +12432,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53966" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54748" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
