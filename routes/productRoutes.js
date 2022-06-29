@@ -6,28 +6,21 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.post('/postStocks', prodController.postProducts);
+// router.post('/postStocks', prodController.postProducts);
 // router.patch('/updateAllProds', prodController.updateProds);
 
 // router.patch('/updateAllProds', prodController.updateAllStats);
 
 router
   .route('/')
-  .get(authController.restrictTo('admin'), prodController.getAllProducts)
-  .post(authController.protect, prodController.createProduct);
+  .get(prodController.getAllProducts)
+  .post(authController.restrictTo('admin'), prodController.createProduct)
+  .patch(authController.restrictTo('admin'), prodController.updateAllProducts);
 
 router
   .route('/:id')
   .get(prodController.getProduct)
-  .patch(
-    authController.protect,
-    authController.restrictTo('admin'),
-    prodController.updateProduct
-  )
-  .delete(
-    authController.protect,
-    authController.restrictTo('admin'),
-    prodController.deleteProduct
-  );
+  .patch(authController.restrictTo('admin'), prodController.updateProduct)
+  .delete(authController.restrictTo('admin'), prodController.deleteProduct);
 
 module.exports = router;

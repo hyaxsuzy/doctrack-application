@@ -2,42 +2,26 @@ const mongoose = require('mongoose');
 
 // Creating a Schema for uploaded files
 const prodSchema = new mongoose.Schema({
-  bondlet: {
-    type: Number
+  name: {
+    type: String,
+    required: [true, 'Product must have a name']
   },
-  bondleg: {
-    type: Number
+  type: {
+    type: String,
+    enum: ['plain', 'glossy', 'laser'],
+    required: [true, 'Product must have a type']
   },
-  bonda4: {
-    type: Number
+  price: {
+    type: Number,
+    required: [true, 'Product must have a price']
   },
-  bonda5: {
-    type: Number
+  additional: {
+    type: Number,
+    required: [true, 'Product must have an additional price for colored prints']
   },
-  glosa6: {
-    type: Number
-  },
-  glosa5: {
-    type: Number
-  },
-  gloslet: {
-    type: Number
-  },
-  glosa4: {
-    type: Number
-  },
-  lasa3: {
-    type: Number
-  },
-  lasa4: {
-    type: Number
-  },
-  lasa5: {
-    type: Number
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  stocks: {
+    type: Number,
+    required: [true, 'Product must have a number of stocks']
   }
 });
 

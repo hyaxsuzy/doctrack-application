@@ -15,186 +15,70 @@ html
 
     body.body
         include nav1
-            .container
-                .price-title
-                    //- .upd--prods
-                    h14.paperproducts Plain Bond Paper
-                    hr
-                div(class='box-container')
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/Letter.png')
-                        div(class='p-content')
-                            h5 Letter
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='3')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='2')
-                            hr
-                            h6 Stocks: 
-                                input#bondlet.stocks(type='number' value='500')
+            form.upd--prods
+                .container
+                    .price-title
+                        //- .upd--prods
+                        h14.paperproducts Plain Bond Paper
+                        hr
+                    div(class='box-container')
+                        each product, index in plainPapers
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name.toLowerCase()}.png`)
+                                div(class='p-content')
+                                    h5= product.name
+                                    li
+                                    h6 Price: 
+                                        input.editprice(type='number' id=`plainPrice-${index}` value=product.price)
+                                    h6.add For colored print
+                                    h6(style="margin-right:45px") Additional: 
+                                        input.editprice(type='number' id=`plainAdditional-${index}` value=product.additional)
+                                    hr
+                                    h6 Stocks: 
+                                        input.stocks(type='number' id=`plainStocks-${index}` value=product.stocks)
+                        
+                    .price-title
+                        h14.paperproducts Glossy Paper
+                        hr
+                    div(class='box-container')
+                        each product, index in glossyPapers
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name.toLowerCase()}.png`)
+                                div(class='p-content')
+                                    h5= product.name
+                                    li
+                                    h6 Price: 
+                                        input.editprice(type='number' id=`glossyPrice-${index}` value=product.price)
+                                    h6.add For colored print
+                                    h6(style="margin-right:45px") Additional: 
+                                        input.editprice(type='number' id=`glossyAdditional-${index}` value=product.additional)
+                                    hr
+                                    h6 Stocks: 
+                                        input.stocks(type='number' id=`glossyStocks-${index}` value=product.stocks)
 
-                    div(class='box')
-                        div(class='image') 
-                            img(src='../img/legal.png')
-                        div(class='p-content')
-                            h5 Legal
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='3')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='2')
-                            hr
-                            h6 Stocks: 
-                                input#bondleg.stocks(type='number' value='500')
-                    
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/a4.png')
-                        div(class='p-content')
-                            h5 A4 
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='3')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='2')
-                            hr
-                            h6 Stocks: 
-                                input#bonda4.stocks(type='number' value='500')
+                    .price-title
+                        h14.paperproducts Laser Paper
+                        hr
 
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/a5.png')
-                        div(class='p-content')
-                            h5 A5 
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='3')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='2')
-                            hr
-                            h6 Stocks: 
-                                input#bonda5.stocks(type='number' value='500')
-                    
-                .price-title
-                    h14.paperproducts Glossy Paper
-                    hr
-                div(class='box-container')
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/Letter.png')
-                        div(class='p-content')
-                            h5 A6
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#glosa6.stocks(type='number' value='500')
-
-                    div(class='box')
-                        div(class='image') 
-                            img(src='../img/legal.png')
-                        div(class='p-content')
-                            h5 A5
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#glosa5.stocks(type='number' value='500')
-                    
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/a4.png')
-                        div(class='p-content')
-                            h5 Letter
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#gloslet.stocks(type='number' value='500')
-
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/a5.png')
-                        div(class='p-content')
-                            h5 A4
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#glosa4.stocks(type='number' value='500')
-
-                .price-title
-                    h14.paperproducts Laser Paper
-                    hr
-
-                div(class='box-container')
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/Letter.png')
-                        div(class='p-content')
-                            h5 A3
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#lasa3.stocks(type='number' value='500')
-                    
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/a4.png')
-                        div(class='p-content')
-                            h5 A4
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#lasa4.stocks(type='number' value='500')
-
-                    div(class='box')
-                        div(class='image')
-                            img(src='../img/a5.png')
-                        div(class='p-content')
-                            h5 A5
-                            li
-                            h6 Price: 
-                                input.editprice(type='number' value='7')
-                            h6.add For colored print
-                            h6(style="margin-right:45px") Additional: 
-                                input.editprice(type='number' value='5')
-                            hr
-                            h6 Stocks: 
-                                input#lasa5.stocks(type='number' value='500')
-                button.updateProd(role='button') Update    
+                    div(class='box-container')
+                        each product, index in laserPapers
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name.toLowerCase()}.png`)
+                                div(class='p-content')
+                                    h5= product.name
+                                    li
+                                    h6 Price: 
+                                        input.editprice(type='number' id=`laserPrice-${index}` value=product.price)
+                                    h6.add For colored print
+                                    h6(style="margin-right:45px") Additional: 
+                                        input.editprice(type='number' id=`laserAdditional-${index}` value=product.additional)
+                                    hr
+                                    h6 Stocks: 
+                                        input.stocks(type='number' id=`laserStocks-${index}` value=product.stocks)
+                    button.updateProd(role='button') Update
         script
             include script.js
 

@@ -11,6 +11,7 @@ import { emailVerif } from './emailVerif';
 import { orderStatus } from './status';
 import { download } from './dl';
 import { uploadProof } from './payment';
+import { updateProducts } from './updateProducts';
 // import { updateProd } from './products';
 
 // DOM ELEMENTS
@@ -29,7 +30,7 @@ const downloadBtn = document.querySelector('.dl--btn');
 const uploadProofBtn = document.querySelector('.upload--btn');
 const inpFile = document.getElementById('inpFile');
 const previewContainer = document.getElementById('imagePreview');
-// const prodForm = document.getElementById('.upd--prods');
+const prodForm = document.querySelector('.upd--prods');
 
 let previewImage, previewDefaultText;
 
@@ -200,22 +201,75 @@ if (orderStatsForm)
     orderStatus(statusArray, statsArray);
   });
 
-// if (prodForm)
-// prodForm.addEventListener('submit', e => {
-//   e.preventDefault();
-//   const bondlet = document.getElementById('bondlet').value;
-//   const bondleg = document.getElementById('bondleg').value;
-//   const bonda4 = document.getElementById('bonda4').value;
-//   const bonda5 = document.getElementById('bonda5').value;
-//   const glosa6 = document.getElementById('glosa6').value;
-//   const glosa5 = document.getElementById('glosa5').value;
-//   const gloslet = document.getElementById('gloslet').value;
-//   const glosa4 = document.getElementById('glosa4').value;
-//   const lasa3 = document.getElementById('lasa3').value;
-//   const lasa4 = document.getElementById('lasa4').value;
-//   const lasa5 = document.getElementById('lasa5').value;
-//   updateProd(bondlet, bondleg, bonda4, bonda5, glosa6, glosa5, gloslet, glosa4, lasa3, lasa4, lasa5);
-// });
+if (prodForm)
+  prodForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let plainArray = [];
+    let glossyArray = [];
+    let laserArray = [];
+
+    let index = 0;
+    while (true) {
+      const price = document.getElementById(`plainPrice-${index}`);
+      const additional = document.getElementById(`plainAdditional-${index}`);
+      const stocks = document.getElementById(`plainStocks-${index}`);
+
+      if (!price) break;
+
+      plainArray = [
+        ...plainArray,
+        {
+          price: price.value,
+          additional: additional.value,
+          stocks: stocks.value
+        }
+      ];
+
+      index++;
+    }
+
+    index = 0;
+    while (true) {
+      const price = document.getElementById(`glossyPrice-${index}`);
+      const additional = document.getElementById(`glossyAdditional-${index}`);
+      const stocks = document.getElementById(`glossyStocks-${index}`);
+
+      if (!price) break;
+
+      glossyArray = [
+        ...glossyArray,
+        {
+          price: price.value,
+          additional: additional.value,
+          stocks: stocks.value
+        }
+      ];
+
+      index++;
+    }
+
+    index = 0;
+    while (true) {
+      const price = document.getElementById(`laserPrice-${index}`);
+      const additional = document.getElementById(`laserAdditional-${index}`);
+      const stocks = document.getElementById(`laserStocks-${index}`);
+
+      if (!price) break;
+
+      laserArray = [
+        ...laserArray,
+        {
+          price: price.value,
+          additional: additional.value,
+          stocks: stocks.value
+        }
+      ];
+
+      index++;
+    }
+
+    updateProducts(plainArray, glossyArray, laserArray);
+  });
 
 // // togglePassword
 // if (togglePassword) {

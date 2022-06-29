@@ -4,6 +4,7 @@ const Proof = require('../models/proofModel');
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const api = require('../utils/api');
+const Product = require('../models/prodModel');
 
 exports.getOverview = catchAsync(async (req, res) => {
   res
@@ -337,15 +338,23 @@ exports.getUsers = catchAsync(async (req, res) => {
     });
 });
 
-exports.getProd = (req, res) => {
+exports.getProd = async (req, res) => {
+  const products = await Product.find();
+  const plainPapers = products.filter(product => product.type === 'plain');
+  const glossyPapers = products.filter(product => product.type === 'glossy');
+  const laserPapers = products.filter(product => product.type === 'laser');
+
   res
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'unsafe-inline' 'unsafe-eval' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('products', {
-      route: 'PRODUCTS'
+      route: 'PRODUCTS',
+      plainPapers,
+      glossyPapers,
+      laserPapers
     });
 };
 
