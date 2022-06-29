@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.use(authController.protect);
 
-router.post('/uploadStocks', prodController.products);
-router.patch('/updateAllProds', prodController.updateProds);
+router.post('/postStocks', prodController.postProducts);
+// router.patch('/updateAllProds', prodController.updateProds);
 
 // router.patch('/updateAllProds', prodController.updateAllStats);
 

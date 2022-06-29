@@ -1,7 +1,7 @@
 const multer = require('multer');
 // const download = require('download');
-const http = require('http'); // or 'https' for https:// URLs
-const fs = require('fs');
+// const http = require('http'); // or 'https' for https:// URLs
+// const fs = require('fs');
 const AppError = require('../utils/appError');
 const catchAsync = require('../utils/catchAsync');
 const File = require('./../models/fileModel');
@@ -39,7 +39,7 @@ exports.uploadFile = catchAsync(async (req, res, next) => {
     file: req.file.filename,
     note: req.body.note,
     type: req.body.type,
-    size: req.body.namefile,
+    size: req.body.size,
     side: req.body.side,
     pages: req.body.pages,
     copies: req.body.copies,

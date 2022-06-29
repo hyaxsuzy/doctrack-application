@@ -202,9 +202,9 @@ html
                                             tbody.orders  
                                                 each file in files
                                                     tr.orders 
-                                                        td.orders Plain Bond Paper
-                                                        td.orders A4
-                                                        td.orders Black&White
+                                                        td.orders #{file.type}
+                                                        td.orders #{file.size}
+                                                        td.orders #{file.color}
                                                         td.orders PHP5
                                                         td.orders 500 
 

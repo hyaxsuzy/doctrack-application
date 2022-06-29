@@ -11,7 +11,7 @@ import { emailVerif } from './emailVerif';
 import { orderStatus } from './status';
 import { download } from './dl';
 import { uploadProof } from './payment';
-import { updateProd } from './products';
+// import { updateProd } from './products';
 
 // DOM ELEMENTS
 const loginForm = document.querySelector('.form--login');
@@ -29,7 +29,7 @@ const downloadBtn = document.querySelector('.dl--btn');
 const uploadProofBtn = document.querySelector('.upload--btn');
 const inpFile = document.getElementById('inpFile');
 const previewContainer = document.getElementById('imagePreview');
-const prodForm = document.getElementById('.upd--prods');
+// const prodForm = document.getElementById('.upd--prods');
 
 let previewImage, previewDefaultText;
 
@@ -193,22 +193,22 @@ if (orderStatsForm)
     orderStatus(statusArray, statsArray);
   });
 
-if (prodForm)
-prodForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const bondlet = document.getElementById('bondlet').value;
-  const bondleg = document.getElementById('bondleg').value;
-  const bonda4 = document.getElementById('bonda4').value;
-  const bonda5 = document.getElementById('bonda5').value;
-  const glosa6 = document.getElementById('glosa6').value;
-  const glosa5 = document.getElementById('glosa5').value;
-  const gloslet = document.getElementById('gloslet').value;
-  const glosa4 = document.getElementById('glosa4').value;
-  const lasa3 = document.getElementById('lasa3').value;
-  const lasa4 = document.getElementById('lasa4').value;
-  const lasa5 = document.getElementById('lasa5').value;
-  updateProd(bondlet, bondleg, bonda4, bonda5, glosa6, glosa5, gloslet, glosa4, lasa3, lasa4, lasa5);
-});
+// if (prodForm)
+// prodForm.addEventListener('submit', e => {
+//   e.preventDefault();
+//   const bondlet = document.getElementById('bondlet').value;
+//   const bondleg = document.getElementById('bondleg').value;
+//   const bonda4 = document.getElementById('bonda4').value;
+//   const bonda5 = document.getElementById('bonda5').value;
+//   const glosa6 = document.getElementById('glosa6').value;
+//   const glosa5 = document.getElementById('glosa5').value;
+//   const gloslet = document.getElementById('gloslet').value;
+//   const glosa4 = document.getElementById('glosa4').value;
+//   const lasa3 = document.getElementById('lasa3').value;
+//   const lasa4 = document.getElementById('lasa4').value;
+//   const lasa5 = document.getElementById('lasa5').value;
+//   updateProd(bondlet, bondleg, bonda4, bonda5, glosa6, glosa5, gloslet, glosa4, lasa3, lasa4, lasa5);
+// });
 
 // // togglePassword
 // if (togglePassword) {
