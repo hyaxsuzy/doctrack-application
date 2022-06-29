@@ -17,8 +17,13 @@ html
         - if (user.role === 'user')
             include nav
                 .container.order 
-                        h34 ORDER##{file._id}
+                        
+                        li
+                        h34 Franchesca Habing
                         //- li
+                        //- h35.date ORDER##{file._id}
+                        li
+                        h34.cust-name ORDER##{file._id}
                         h35.date Date of order: #{moment(file.createdAt).format('hh:mm A')}
                         ul
                             

@@ -154,6 +154,7 @@ html
                                                     th.orders Order No 
                                                     th.orders Customer Name 
                                                     th.orders Date of Order
+                                                    th.orders Payment Status
                                                     th.orders Order Status
                                                     th.orders Amount
                                             tbody.orders  
@@ -161,12 +162,13 @@ html
                                                     tr.orders 
                                                         td.orders #{file._id}
                                                         td.orders Name
-                                                        td.orders PHP50
+                                                        td.orders 28/06/2022
                                                         td.orders Paid
-                                                        td 
+                                                        td.orders 
                                                             span.badge.rounded-pill.bg-primary #{file.status}
+                                                        td.orders PHP50
                                                         td.orders
-                                                            a.orderd(href=`/file-info1/${file._id}`) Order Summary
+                                                            a.orderd(href=`/file-info1/${file._id}`) Receipt
                 .row.no-gutters
                     .col-md-12.no-gutters
                         .order-section 

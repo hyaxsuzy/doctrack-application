@@ -40,7 +40,7 @@ html
                                             th FILE NAME
                                             th PICKUP
                                             th TIME UPLOADED
-                                            th(style="text-align: center") STATUS
+                                            th STATUS
                                             th
                                     tbody 
                                         each file in userfiles 
@@ -55,7 +55,7 @@ html
                                                     span.badge.rounded-pill.bg-primary
                                                         a(href=`/file-info/${file._id}` style="text-decoration: none")= file.status
                                                 td
-                                                    a.orderd(href="/file-info" style="text-decoration: none") Details
+                                                    a.orderd(href="/file-info" style="text-decoration: none") Receipt
 
         - else if (user.role === 'admin')
             include nav1
@@ -108,8 +108,8 @@ html
                                                         option(value='Prepared' selected=file.status === 'Prepared') Prepared
                                                         option(value='Completed' selected=file.status === 'Completed') Completed   
                                                 td
-                                                    a.orderd(href="/file-info1" style="text-decoration: none") Order Summary
-                                    button.next1(class='next' role='button') Update
+                                                    a.orderd(href="/file-info1" style="text-decoration: none") Receipt
+                                    button.next1(class='next' role='button' style="margin-top:-30px; margin-bottom: 20px") Update
         script
             include script.js
         //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js')
