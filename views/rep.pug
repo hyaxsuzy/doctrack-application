@@ -34,7 +34,7 @@ html
                             each file in files
                                 tr 
                                     td #{file._id}
-                                    td Franchesca Habing
+                                    td= file.user.name
                                     td= moment(user.createdAt).format('YYYY-MM-DD')
                                     td #{file.stats}
                                     td #{file.status}
