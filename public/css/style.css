@@ -1127,10 +1127,10 @@ h33.log {
 }
 
 img.sizes {
-    width: 80%;
-    height: 25rem;
+    /* width: 80%; */
+    /* height: 25rem; */
     margin-top: 50px;
-    margin-left: 120px;
+    margin-left: -50px;
     margin-bottom: 100px;
 }
 
