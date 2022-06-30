@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "File 1",
+    "note": "Handle with care",
+    "type": "Bond paper",
+    "size": "A4",
+    "quantity": 10,
+    "price": 5
+  },
+  {
+    "id": 2,
+    "name": "File 2",
+    "note": "Will pick on time",
+    "type": "Glossy paper",
+    "size": "A5",
+    "quantity": 5,
+    "price": 12.5
+  },
+  {
+    "id": 3,
+    "name": "File 3",
+    "note": "With additional binder",
+    "type": "Glossy paper",
+    "size": "A4",
+    "quantity": 8,
+    "price": 16
+  }
+]
