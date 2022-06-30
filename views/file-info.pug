@@ -134,14 +134,15 @@ html
                                                     //- tr 
                                                     //-     td(colspan="5") Total 
                                                     //-     td Php 400
-                                                    li
-                        a.back2(href='/documents' class='previous') &#8249; Back to Files
+                                                    //-li
                         //- div(class="popup" id="proofp")
                         //-     div(class="popup-content")
                         //-         h1 PROOF OF PAYMENT: 
                         //-         img(src=`/img/proofs/${proof.payment}`, alt='Proof of payment')
                         //-         //- a(href="#" class="closeproof") x
-                        a(href=`/viewproof/${proof._id}` class="proofbutton" style="margin-left: 72%") Proof of Payment
+                        div(style="display: flex; justify-content: space-between; align-items: center")
+                            a.back2(href='/documents' class='previous') &#8249; Back to Files
+                            a(href=`/viewproof/${proof._id}` class="proofbutton") Proof of Payment
 
         script
             include script.js
