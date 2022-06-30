@@ -1,10 +1,10 @@
 const moment = require('moment');
+const axios = require('axios');
 const File = require('../models/fileModel');
 const Proof = require('../models/proofModel');
 const User = require('../models/userModel');
 const Product = require('../models/prodModel');
 const catchAsync = require('../utils/catchAsync');
-const api = require('../utils/api');
 
 exports.getOverview = catchAsync(async (req, res) => {
   res
@@ -318,7 +318,10 @@ exports.getVerif = (req, res) => {
 };
 
 exports.getVerif1 = async (req, res) => {
-  await api.get(`/users/verify/${req.params.token}`);
+  await axios({
+    method: 'GET',
+    url: `/users/verify/${req.params.token}`
+  });
 
   res
     .status(200)
