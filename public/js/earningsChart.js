@@ -1,4 +1,5 @@
 /*eslint-disable*/
+// not used
 const chart = document.getElementById('earnedChart').getContext('2d');
 const earnedChart = new Chart(chart, {
   type: 'line',
