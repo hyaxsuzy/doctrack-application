@@ -12,6 +12,7 @@ import { orderStatus } from './status';
 import { download } from './dl';
 import { uploadProof } from './payment';
 import { updateProducts } from './updateProducts';
+import { getProducts } from './getProducts';
 // import { updateProd } from './products';
 
 // DOM ELEMENTS
@@ -31,8 +32,16 @@ const uploadProofBtn = document.querySelector('.upload--btn');
 const inpFile = document.getElementById('inpFile');
 const previewContainer = document.getElementById('imagePreview');
 const prodForm = document.querySelector('.upd--prods');
+const typeSelect = document.getElementById('type');
+const sizeSelect = document.getElementById('size');
+const sideSelect = document.getElementById('side');
+const colorSelect = document.getElementById('color');
+const filenameField = document.getElementById('namefile');
+const copiesField = document.getElementById('copies');
+const pagesField = document.getElementById('pages');
 
-let previewImage, previewDefaultText;
+let previewImage, previewDefaultText, products;
+uploadFileForm && getProducts().then(res => (products = res.data.data.data));
 
 if (previewContainer) {
   previewImage = previewContainer.querySelector('.image-preview__image');
@@ -290,3 +299,79 @@ if (prodForm)
 //     this.classList.toggle('fa-eye-slash');
 //   });
 // }
+
+if (typeSelect)
+  typeSelect.addEventListener('change', e => {
+    sizeSelect.innerHTML = '';
+    const filtered = products.filter(
+      product => product.type === typeSelect.value
+    );
+
+    const option = document.createElement('option');
+    option.disabled = true;
+    option.selected = true;
+    sizeSelect.appendChild(option);
+
+    filtered.forEach(product => {
+      const option = document.createElement('option');
+      option.text = product.name;
+      option.value = product.name;
+      sizeSelect.appendChild(option);
+    });
+
+    updatePrice();
+  });
+if (sizeSelect) sizeSelect.addEventListener('change', e => updatePrice());
+if (colorSelect) colorSelect.addEventListener('change', e => updatePrice());
+
+if (sideSelect)
+  sideSelect.addEventListener('change', e => {
+    const summarySide = document.getElementById('summarySide');
+    summarySide.textContent =
+      sideSelect.value === 'front' ? 'Front' : 'Front & Back';
+  });
+
+if (filenameField)
+  filenameField.addEventListener('input', e => {
+    const summaryFilename = document.getElementById('summaryFilename');
+    summaryFilename.textContent = filenameField.value;
+  });
+
+if (copiesField)
+  copiesField.addEventListener('input', e => {
+    updatePrice();
+    const summaryCopies = document.getElementById('summaryCopies');
+    summaryCopies.textContent = `x${copiesField.value}`;
+  });
+
+if (pagesField)
+  pagesField.addEventListener('input', e => {
+    updatePrice();
+    const summaryPages = document.getElementById('summaryPages');
+    summaryPages.textContent = pagesField.value;
+  });
+
+const updatePrice = () => {
+  const type = typeSelect.value;
+  const size = sizeSelect.value;
+  const color = colorSelect.value;
+  const pages = pagesField.value;
+  const copies = copiesField.value;
+
+  const product = products.find(
+    product => product.type === type && product.name === size
+  );
+
+  let total = 0;
+  let pricePerPage = 0;
+  if (product) {
+    pricePerPage =
+      product.price + (color === 'colored' ? product.additional : 0);
+    total = pricePerPage * pages * copies;
+  }
+
+  const summaryPrice = document.getElementById('summaryPrice');
+  summaryPrice.textContent = `Php ${pricePerPage.toFixed(2)}`;
+  const summaryTotal = document.getElementById('summaryTotal');
+  summaryTotal.textContent = `Php ${total.toFixed(2)}`;
+};

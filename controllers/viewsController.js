@@ -164,14 +164,16 @@ exports.getTermsNCondi1 = (req, res) => {
 };
 
 exports.addPrintFiles = (req, res) => {
+  const text = 'test';
   res
     .status(200)
     .set(
       'Content-Security-Policy',
-      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-ummjbBUujetdVg7wfra/doxXnMc8b/VJ2oLMkHn6Vs0=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'unsafe-inline' 'unsafe-eval' 'self' blob: ;style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('add-files', {
-      route: 'UPLOAD FILE'
+      route: 'UPLOAD FILE',
+      text
     });
 };
 

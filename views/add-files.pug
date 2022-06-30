@@ -37,11 +37,11 @@ html
                                 div.selection
                                     //- h17 TYPE OF PAPER 
                                     ul
-                                    select#type.select(name='type' onchange='calculateAmount()')
+                                    select#type.select(name='type')
                                         option(value='0' disabled selected)
-                                        option(value='3') Plain Bond Paper
-                                        option(value='7') Glossy Paper
-                                        option(value='10') Laser Paper
+                                        option(value='plain') Plain Bond Paper
+                                        option(value='glossy') Glossy Paper
+                                        option(value='laser') Laser Paper
                                 //- New
                                 div.Title
                                     h18 Size of Paper:
@@ -51,17 +51,11 @@ html
                                     //- h17 SIZE OF PAPER
                                     ul
                                     select#size.select
-                                        option(selected="selectedvalue") 
-                                        option Letter
-                                        option Legal
-                                        option A3 
-                                        option A4 
-                                        option A5
-                                        option A6
+                                        option(disabled selected)
 
                                 div.Title
                                     h18 No. of pages on the document:    
-                                    input#pages.pageqty(type='number' value='' style="margin-left: 30px")                       
+                                    input#pages.pageqty(type='number' style="margin-left: 30px" step='1' min='1')                       
 
                                 //- div.Title
                                 //-     h18 Page Side:
@@ -111,10 +105,10 @@ html
                                 div.selection
                                     //- h17 TYPE OF FINISH
                                     ul
-                                    select#side.select(name='side' onchange='calculateAmount()')
+                                    select#side.select(name='side' )
                                         option(value='0' disabled selected) 
-                                        option(value='1') Print on front side
-                                        option(value='2') Print on front and back sides
+                                        option(value='front') Print on front side
+                                        option(value='front&back') Print on front and back sides
 
                                 div.Title
                                     h18 Orientation:
@@ -135,14 +129,14 @@ html
                                 div.selection
                                     //- h17 TYPE OF COLOR
                                     ul
-                                    select#color.select(name='color' onchange='calculateAmount()')
+                                    select#color.select(name='color' )
                                         option(value='0' disabled selected) 
-                                        option(value='1') Black and White
-                                        option(value='2') Colored
+                                        option(value='b&w') Black and White
+                                        option(value='colored') Colored
 
                                 div.Title
                                     h18 Number of Copies:    
-                                    input#copies.copiesnumber(type='number' name='copies' step='1' min='1' max='499' onchange='calculateAmount()')
+                                    input#copies.copiesnumber(type='number' name='copies' step='1' min='1' max='499' )
 
                             .col-4
                                 .custom-file.mb-3
@@ -194,35 +188,35 @@ html
                                 //-                 td.summary Php 400
                                 //- div.box
                                 //-     div.box_content
-                            
+
                             //- New
-                               
+
 
                                 //-     button.next(class='next' type='submit') Place Order
                                 //- a.back(href='/documents' class='previous') &#8249; Back          
-                            //- .col-2  
+                                //- .col-2  
 
-                                //- button.button11.btn.btn-primary.btn-lg(type='submit', value='Submit') Proceed to Payment
-                                //- a.button10.btn.btn-primary.btn-lg(href='/documents' id='cancel' name='cancel') Go back to Files
-                            //- .col-6
-                            //-     div(class='adminwallet')
-                            //-         div(class='topay')
-                            //-             h27 Send your payment in this account
-                                        
-                            //-             div(class='a-content' style="font-weight: 500")
-                            //-                 h18 90123456789 / TUP Doctrack
-                            //-                 li
-                                
-                            //-     div(class='proof')
-                            //-         div(class='proofimg')
-                            //-             h27 Proof of Payment
-                            //-         div(class='a-content')
-                            //-             h24 Please save the image of your payment receipt and upload it below.
-                            //-     .cupstom-file.mb-3
-                            //-         label.uploadfile(for='file' class='form-label') 
-                            //-         //- input#file(class='form-control form-control-lg', name='file', type='file')
-                            //-         input#payment(class='form-control form-control-lg', type='file', accept='image/*', name='payment')   
-                        
+                                    //- button.button11.btn.btn-primary.btn-lg(type='submit', value='Submit') Proceed to Payment
+                                    //- a.button10.btn.btn-primary.btn-lg(href='/documents' id='cancel' name='cancel') Go back to Files
+                                    //- .col-6
+                                    //-     div(class='adminwallet')
+                                    //-         div(class='topay')
+                                    //-             h27 Send your payment in this account
+
+                                    //-             div(class='a-content' style="font-weight: 500")
+                                    //-                 h18 90123456789 / TUP Doctrack
+                                    //-                 li
+
+                                    //-     div(class='proof')
+                                    //-         div(class='proofimg')
+                                    //-             h27 Proof of Payment
+                                    //-         div(class='a-content')
+                                    //-             h24 Please save the image of your payment receipt and upload it below.
+                                    //-     .cupstom-file.mb-3
+                                    //-         label.uploadfile(for='file' class='form-label') 
+                                    //-         //- input#file(class='form-control form-control-lg', name='file', type='file')
+                                    //-         input#payment(class='form-control form-control-lg', type='file', accept='image/*', name='payment')   
+
                         .line.summary
                         div.OrderSummary
                             div.header
@@ -240,14 +234,12 @@ html
                                         th.summary(class="w-20") Total
 
                                     tr.summary 
-                                        td.summary File Name
-                                        td.summary 
-                                            input(type='text' id='price_type' name='price_type')
-                                        td.summary 20
-                                        td.summary x2
-                                        td.summary x2 
-                                        td.summary Php 
-                                            input#tot_amount(name='tot_amount' type='text' readonly)
+                                        td.summary#summaryFilename
+                                        td.summary#summaryPrice
+                                        td.summary#summaryPages
+                                        td.summary#summaryCopies
+                                        td.summary#summarySide
+                                        td.summary#summaryTotal
 
                                     //- tr.summary 
                                     //-     td.summary #{file.namefile}
@@ -257,13 +249,13 @@ html
                                     //-     td.summary #{file.side}
                                     //-     td.summary Php 400
 
-                                    tr.summary 
-                                        td.summary(colspan="5") Total 
-                                        td.summary Php 400
+                                    //- tr.summary 
+                                    //-     td.summary(colspan="5") Total 
+                                    //-     td.summary Php 400
                         div.box
                             div.box_content
 
-                        
+
                         a.back(href='/documents' class='previous') &#8249; Back    
                         button.ptopay(type='submit') Payment         
 
