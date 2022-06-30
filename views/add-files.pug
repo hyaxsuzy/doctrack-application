@@ -11,6 +11,7 @@ html
         script(src='https://kit.fontawesome.com/3f396099dd.js' crossorigin='anonymous')
         script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous')
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js' integrity='sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13' crossorigin='anonymous')
+        link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css')
         title Doctrack | Documents
 
     body.body.files
@@ -24,11 +25,11 @@ html
                             .col-4
 
                                 div.Title
-                                    h18 Time of Pick-Up:
+                                    h18 Date & Time of Pick-Up:
                                 div.a-content
                                     h24 Please select the preferred time of pick up.
-                                    input#pickup.form-control(type='time' value='')
-
+                                    input#pickup.form-control(type='datetime-local' placeholder='Select Date & Time')
+                                        
                                 div.Title
                                     h18 Type of Paper:
                                 div.a-content
@@ -59,7 +60,8 @@ html
                                         option A6
 
                                 div.Title
-                                    h18 No. of pages on the document:    
+                                    h18 No. of pages on
+                                    h18(style="") the document:    
                                     input#pages.pageqty(type='number' value='')                       
 
                                 //- div.Title
@@ -112,8 +114,8 @@ html
                                     ul
                                     select#side.select(name='side' onchange='calculateAmount()')
                                         option(value='0' disabled selected) 
-                                        option(value='1') Print One Sided
-                                        option(value='2') Print on Both Sides
+                                        option(value='1') Print on front side
+                                        option(value='2') Print on front and back sides
 
                                 div.Title
                                     h18 Orientation:
@@ -271,3 +273,5 @@ html
         //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js')
         //- script(src='/js/login.js')
         script(src='/js/bundle.js')
+        script(src='/js/DateTime.js')
+        script(src='https://cdn.jsdelivr.net/npm/flatpickr')

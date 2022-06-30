@@ -16,7 +16,7 @@ html
     body.files.body
         - if (user.role === 'admin')
             include nav1
-                .container.order 
+                .container.order1 
                         li
                         h34 #{user.name}
                         //- li
@@ -105,8 +105,8 @@ html
                             h35.note2 Note: 
                                 h35.note #{file.note}
 
-                            h1 Proof of payment: 
-                            //- img(src=`/img/proofs/${proof.payment}`, alt='Proof of payment')
+                            //- h1 Proof of payment: 
+                            //- //- img(src=`/img/proofs/${proof.payment}`, alt='Proof of payment')
 
                         hr 
 
@@ -137,9 +137,16 @@ html
                                                     tr 
                                                         td(colspan="5") Total 
                                                         td Php 400
-                        
+                        ul
+                        div(class="popup" id="proofp")
+                            div(class="popup-content")
+                                img(src='/viewproofs/${proof._id}', alt='Preview Payment Proof')
+                                a(href="#" class="closeproof") x
+                        a(href="#proofp" class="proofbutton" style="margin-left: 65rem;") Proof of Payment
+                        li
                         a.back2(href='/documents' class='previous') &#8249; Back to Files
                         button.dl--btn.next(class='downloadinv' type='submit') Download
+                        
 
         script
             include script.js

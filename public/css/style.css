@@ -1600,11 +1600,11 @@ body.files {
 
 .order-details {
     background-color: white;
-    box-shadow: 0 1px 4px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
     border-radius: 5px;
-    height: 40rem;
+    height: 54rem;
     padding: 30px 25px;
-    margin-top: 8rem;
+    margin-top: -20px;
     width: 85rem;
     margin-left: -30px;
 }
@@ -1637,7 +1637,7 @@ select[class="select"] {
     margin-bottom: 20px;
 }
 
-input[type='time'] {
+input[type='datetime-local'] {
     font-family: 'Poppins', sans-serif;
     margin-bottom: 10px;
     margin-top: 16px;
@@ -1850,7 +1850,7 @@ button.next {
     cursor: pointer;
     margin-top: 20px;
     margin-left: 65rem;
-    /* margin-bottom: 20rem; */
+    margin-bottom: 30px;
     text-decoration: none;
 }
 
@@ -2925,8 +2925,8 @@ a.ve:hover {
     padding: 20px 30px 20px 30px;
     border-radius: 0px 0px 6px 6px;
     z-index: 500;
+    margin-bottom: 30px;
 }
-
 .container.order:hover {
     color: black;
 }
@@ -2936,7 +2936,7 @@ a.ve:hover {
     background-color: white;
     padding: 40px;
     border-radius: 5px;
-    height: 885px;
+    height: 845px;
     margin-top: 35px;
 }
 
@@ -2995,22 +2995,6 @@ h35.note2 {
 .row.dets {
     margin-top: 50px;
     margin-bottom: 30px;
-}
-
-a.back2 {
-    color: #A02525;
-    border: none;
-    font-weight: 500;
-    font-size: 20px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    top: 20px;
-    position: relative;
-    /* right: 64rem; */
-    /* bottom: -5rem; */
-    /* padding-top: 30px; */
-    /* margin-left: 20px; */
-    text-decoration: none;
 }
 
 .OrderSummary2 table thead tr {
@@ -4110,3 +4094,97 @@ h34.cust-name {
     /* letter-spacing: 3px; */
     font-family: "Segoe UI", sans-serif;
 } 
+
+
+/* proof pop up */
+.proofbutton {
+    border: 3px solid #A02525;
+    background: #A02525;
+    padding: 5px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    /* margin-left: 68%; */
+}
+
+.proofbutton:hover{
+    background: maroon;
+    border: 3px solid maroon;
+    color: #fff;
+}
+
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 100;
+}
+
+#proofp .popup-content{
+    width: 600px;
+    height: 600px;
+    margin: 100px auto;
+    position: relative;
+    /* border: 5px solid #f?ff; */
+}
+
+.closeproof {
+    position: absolute;
+    font-size: 30px;
+    font-weight: 500;
+    top: -80px;
+    right: -600px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    color: maroon;
+    text-decoration: none;
+    line-height: 0;
+    padding: 12px 0 15px 0;
+    width: 30px;
+    text-align: center;
+    background: #fff;
+}
+
+.closeproof:hover{
+    color: #fff;
+    border: 2px solid maroon;
+    background: maroon;
+    font-weight: 500;
+}
+
+.popup:target{
+    display: block;
+}
+
+/*Back button on file info Replace with orig */
+a.back2 {
+    color: #A02525;
+    border: none;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    top: 20px;
+    /* position: relative; */
+    /* right: 64rem; */
+    /* bottom: -5rem; */
+    /* padding-top: 30px; */
+    /* margin-left: 20px; */
+    /* margin-left: 120%; */
+    text-decoration: none;
+}
+
+.container.order1 {
+    box-shadow: 0 1px 4px 1px rgb(0 0 0 / 10%);
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    height: 895px;
+    margin-top: 35px;
+    /* margin-bottom: 35px; */
+}

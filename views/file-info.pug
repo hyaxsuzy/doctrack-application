@@ -102,8 +102,7 @@ html
                             h35.note2 Note: 
                                 h35.note #{file.note}
 
-                            h1 Proof of payment: 
-                            //- img(src=`/img/proofs/${proof.payment}`, alt='Proof of payment')
+                            
 
                         hr 
 
@@ -134,7 +133,16 @@ html
                                                     tr 
                                                         td(colspan="5") Total 
                                                         td Php 400
+                                                    li
                         a.back2(href='/documents' class='previous') &#8249; Back to Files
+                        div(class="popup" id="proofp")
+                            div(class="popup-content")
+                                img(src='/img/proofs/${proof.payment}', alt='Preview Payment Proof')
+                                a(href="#" class="closeproof") x
+                        a(href="#proofp" class="proofbutton" style="margin-left: 72%") Proof of Payment
+                        //- h1 Proof of payment: 
+                            //- img(src=`/img/proofs/${proof.payment}`, alt='Proof of payment')
+                        
 
         script
             include script.js

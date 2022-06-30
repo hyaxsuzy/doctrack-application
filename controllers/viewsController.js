@@ -193,6 +193,7 @@ exports.proofPayment = async (req, res) => {
 exports.getFileInfo = catchAsync(async (req, res) => {
   const file = await File.findById(req.params.id);
   const proof = await Proof.findById(req.params.id);
+  const proofs = await Proof.find({user: req.user._id});
   res
     .status(200)
     .set(
@@ -203,6 +204,7 @@ exports.getFileInfo = catchAsync(async (req, res) => {
       route: 'RECEIPT',
       file,
       proof,
+      proofs,
       moment: moment
     });
 });
@@ -210,6 +212,7 @@ exports.getFileInfo = catchAsync(async (req, res) => {
 exports.getFileInfo1 = catchAsync(async (req, res) => {
   const file = await File.findById(req.params.id);
   const proof = await Proof.findById(req.params.id);
+  const proofs = await Proof.find({user: req.user._id});
 
   res
     .status(200)
@@ -221,6 +224,7 @@ exports.getFileInfo1 = catchAsync(async (req, res) => {
       route: 'RECEIPT',
       file,
       proof,
+      proofs,
       moment: moment
     });
 });
