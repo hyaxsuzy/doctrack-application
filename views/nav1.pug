@@ -1,0 +1,98 @@
+.sidebar
+    .logo_content 
+        .logo 
+            img(src='../img/try.png' alt='logo')
+        i.fa-solid.fa-bars(id='btn')
+    ul.nav_links
+        li 
+            .icon-link
+                a(href="/dashboard")
+                    i.fa-solid.fa-window-restore
+                    span.link_name Dashboard
+                i.fa-solid.fa-chevron-down.arrow
+            ul.sub-menu
+                li 
+                    a.link_name(href="/dashboard")
+                        i.fa-solid.fa-copy
+                        span Dashboard
+                li 
+                    a(href="/documents")
+                        i.fa-solid.fa-file-arrow-down
+                        span Orders
+                li 
+                    a(href="/products")
+                        i.fa-solid.fa-box-archive
+                        span Products
+                li 
+                    a(href="/stats")
+                        i.fa-solid.fa-chart-simple
+                        span Statistics
+                li 
+                    a(href="/rep")
+                        i.fa-solid.fa-file-lines
+                        span Order Report
+                li 
+                    a(href="/all-users")
+                        i.fa-solid.fa-users
+                        span Manage Users
+        li 
+            a(href="/about")
+                i.fa-solid.fa-circle-info
+                span.link_name About DocTrack
+            ul.sub-menu.blank 
+                li 
+                    a.link_name(href="/about")
+                        span About
+        li 
+            a(href="/terms&condition")
+                i.fa-solid.fa-file-shield
+                span.link_name Terms and Conditions
+            ul.sub-menu.blank 
+                li 
+                    a.link_name(href="/terms&condition")
+                        span Terms
+
+        li 
+            a(href='/settings')
+                i.fa-solid.fa-gear
+                span.link_name Settings
+            ul.sub-menu.blank 
+                li 
+                    a.link_name(href="/settings")
+                        span Settings
+        li.school
+            .school_details
+                .tup_content
+                    img(src='../img/tup.png' alt='tuplogo')
+                .tup_desc 
+                    span Powered by TUP
+
+.wrapper 
+    .navbar
+        .logo 
+            span #{route}
+        .nav_right 
+            ul.list-unstyled 
+                //- li.nr_li 
+                //-     i.fa-solid.fa-bell
+                li.nr_li.li_main 
+                    //- img(src='../img/cha.jpg' alt='profile_image')
+                    img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+                    span= user.name.split('  ')
+                    .dd_menu 
+                        .dd_left 
+                            ul.list-unstyled 
+                                li 
+                                    i.fa-solid.fa-user
+                                li
+                                    i.fa-solid.fa-right-from-bracket
+                        .dd_right 
+                            ul.list-unstyled
+                                li 
+                                    a(href="/user-profile")
+                                        span Profile
+                                li
+                                    a(href="/logout")
+                                        span Logout
+
+    .home-content 
