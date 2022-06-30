@@ -1,0 +1,117 @@
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='css/style.css')
+        link(rel='preconnect' href='https://fonts.googleapis.com')
+        link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+        link(href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Pridi:wght@300&display=swap' rel='stylesheet')
+        link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3' crossorigin='anonymous')
+        script(src='https://kit.fontawesome.com/3f396099dd.js' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js' integrity='sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js' integrity='sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13' crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js')
+        title Doctrack | Statistics
+
+    body.body
+        include nav1
+           main.dashboard
+                .row
+                    .col-md-5.no-gutters
+                        .left
+                            div(class="insights")
+                                .col-12   
+                                    class(type="customers")
+                                        h5.customer Total Orders 
+                                            i.fa-solid.fa-box
+                                        small(class="text-muted") Total number of orders acquired
+                                        div(class="middle")
+                                            h6.customers #{numFiles}
+                    //- .col-md-4.no-gutters
+                    //-     .center
+                    .col-md-7.no-gutters
+                        .right
+                            .ordercompstat
+                                div(class="insights")
+                                    .col-12   
+                                        class(type="customers")
+                                            h5.customer Orders Completed
+                                                i.fa-solid.fa-circle-check
+                                            small(class="text-muted") Total number of orders completed
+                                            div(class="middle")
+                                                h6.customers #{completed}
+
+                .row.no-gutters
+                    .col-md-5.no-gutters
+                        .left
+                            div(class="insights")
+                                .col-12   
+                                    class(type="customers")
+                                        h5.customer Most Used Paper
+                                            i.fa-solid.fa-scroll
+                                        small(class="text-muted") Type of paper mostly ordered by the customers
+                                        div(class="middle")
+                                            h6.topcustomers Bond Paper
+                    .col-md-7.no-gutters
+                        .right
+                            .ordercompstat
+                                div(class="insights")
+                                    .col-12   
+                                        class(type="customers")
+                                            h5.customer Total Earnings
+                                                i.fa-solid.fa-wallet
+                                            small(class="text-muted") As of today
+                                            div(class="middle")
+                                                h6.topcustomers PHP500
+
+                .row.no-gutters
+                    .col-md-5.no-gutters
+                        .left
+                            div.earnings(class="charts" style="margin-top:-80px;")
+                            .col-12
+                                div.earning(class="chart" style="margin-left:20px;margin-top:60px;")
+                                    h1.dashb Type of Paper
+                                    canvas(id='prodChart' width="400" height="233")
+                    .col-md-7.no-gutters
+                        .right
+                            div.earnings(class="charts" style="margin-top:-80px")
+                                div.earnings(class="chart")
+                                    h1.dashb Earnings this day
+                                    canvas(id='earnedChart' width="400" height="170")          
+                //- .row.no-gutters
+                //-     .col-md-5.no-gutters
+                //-         .left
+                //-             div.earnings(class="charts" style="margin-top:-80px;")
+                //-             .col-12
+                //-                 div.earning(class="chart" style="margin-left:20px;margin-top:60px;")
+                //-                     h1.dashb Earnings this month
+                //-                     canvas(id='lineChart' width="400" height="250")
+                //-     .col-md-7.no-gutters
+                //-         .right
+                //-             div.earnings(class="charts" style="margin-top:-80px")
+                //-                 div.earnings(class="chart")
+                //-                     h1.dashb Earnings this year
+                //-                     canvas(id='lineChart' width="400" height="250")
+                //- .row.no-gutters
+                //-     .col-md-5.no-gutters
+                //-         .left
+                //-             div.earnings(class="charts" style="margin-top:-80px")
+                                
+                //-                     div.earning(class="chart")
+                //-                         h1.dashb Earnings This Week
+                //-                         canvas(id='lineChart' width="400" height="250")
+                //-     .col-md-7.no-gutters
+                //-         .right
+                //-             div.earnings(class="charts" style="margin-top:-80px")
+                //-                 div.earnings(class="chart")
+                //-                     h1.dashb Earnings This Year
+                //-                     canvas(id='lineChart' width="400" height="250")  
+
+        script
+            include script.js
+        script(src='/js/bundle.js')
+        //- script(src='https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js')
+        //- script(src='chart1.js')
+        script(src='/js/earningsChart.js')
+        script(src='/js/productsChart.js')
