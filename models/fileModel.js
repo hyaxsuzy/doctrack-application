@@ -74,7 +74,8 @@ const fileSchema = new mongoose.Schema({
   stats: {
     type: String,
     default: 'Unpaid'
-  }
+  },
+  totalPrice: Number
   // price: {
   //   type: Number,
   //   required: [true, 'A file must have a price']

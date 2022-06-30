@@ -5,9 +5,10 @@ const proofSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId
   },
-  // file: {
-  //   type: mongoose.Schema.Types.ObjectId
-  // },
+  file: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'File'
+  },
   createdAt: {
     type: Date,
     default: Date.now
@@ -27,6 +28,10 @@ const proofSchema = new mongoose.Schema({
   payment: {
     type: String,
     required: [true, 'Must have an uploaded proof of payment']
+  },
+  paymentMethod: {
+    type: String,
+    require: [true, 'Must have a payment method']
   }
 });
 

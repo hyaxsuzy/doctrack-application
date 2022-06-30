@@ -68,12 +68,12 @@ html
                                         th.summary(class="w-20") Total
 
                                     tr.summary 
-                                        td.summary File Name
-                                        td.summary 5
-                                        td.summary 20
-                                        td.summary x2
-                                        td.summary x2 
-                                        td.summary Php 400
+                                        td.summary= file.namefile
+                                        td.summary= `Php ${file.price.toFixed(2)}`
+                                        td.summary= file.pages
+                                        td.summary= `x${file.copies}`
+                                        td.summary= file.side === 'front' ? 'Front' : 'Front & Back'
+                                        td.summary= `Php ${file.totalPrice.toFixed(2)}`
 
                                     //- tr.summary 
                                     //-     td.summary #{file.namefile}
@@ -83,9 +83,9 @@ html
                                     //-     td.summary #{file.side}
                                     //-     td.summary Php 400
 
-                                    tr.summary 
-                                        td.summary(colspan="5") Total 
-                                        td.summary Php 400
+                                    //- tr.summary 
+                                    //-     td.summary(colspan="5") Total 
+                                    //-     td.summary Php 400
                         div.box
                             div.box_content
 

@@ -38,9 +38,11 @@ exports.resizeProofPhoto = (req, res, next) => {
 exports.proofPay = async (req, res, next) => {
   const newUpload = await Proof.create({
     user: req.user._id,
+    file: req.params.id,
     payment: req.file.filename,
-    gcash: req.body.gcash,
-    paymaya: req.body.paymaya
+    // gcash: req.body.gcash,
+    // paymaya: req.body.paymaya,
+    paymentMethod: req.body.paymentMethod
   });
 
   res.status(201).json({

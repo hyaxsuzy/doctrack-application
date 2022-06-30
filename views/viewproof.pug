@@ -18,9 +18,9 @@ html
             include nav
                 .container.proofp
                     h1.proofp Mode of Payment:
-                    - if (proof.gcash)
+                    - if (proof.paymentMethod === 'gcash')
                         h2.proofp GCash
-                    - else (proof.paymaya)
+                    - else
                         h2.proofp Paymaya
                     h1.proofp Proof of Payment: 
                     //- hr

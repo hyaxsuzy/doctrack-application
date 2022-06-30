@@ -47,6 +47,7 @@ exports.uploadFile = catchAsync(async (req, res, next) => {
     pickup: req.body.pickup,
     orientation: req.body.orientation,
     color: req.body.color,
+    totalPrice: req.body.totalPrice,
     status: req.body.status
   });
 

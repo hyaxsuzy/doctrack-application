@@ -23,7 +23,7 @@ router.get(
   viewsController.addPrintFiles
 );
 router.get(
-  '/payment-proof',
+  '/payment-proof/:id',
   authController.isLoggedIn,
   authController.protect,
   viewsController.proofPayment

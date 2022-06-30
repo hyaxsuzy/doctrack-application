@@ -11456,7 +11456,7 @@ var uploadFile = /*#__PURE__*/function () {
             if (res.data.status === 'success') {
               (0, _alerts.showAlert)('success', 'Proceed to payment');
               window.setTimeout(function () {
-                location.assign('/payment-proof');
+                location.assign("/payment-proof/".concat(res.data.data.data._id));
               }, 1500);
             }
 
@@ -11869,20 +11869,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var uploadProof = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(ecash) {
-    var res;
+    var fileId, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.prev = 0;
-            _context.next = 3;
+            fileId = location.pathname.split('/')[2];
+            console.log(fileId);
+            _context.prev = 2;
+            _context.next = 5;
             return (0, _axios.default)({
               method: 'POST',
-              url: '/api/v1/proofs/uploadProof',
+              url: "/api/v1/proofs/uploadProof/".concat(fileId),
               data: ecash
             });
 
-          case 3:
+          case 5:
             res = _context.sent;
 
             if (res.data.status === 'success') {
@@ -11892,20 +11894,20 @@ var uploadProof = /*#__PURE__*/function () {
               }, 1500);
             }
 
-            _context.next = 10;
+            _context.next = 12;
             break;
 
-          case 7:
-            _context.prev = 7;
-            _context.t0 = _context["catch"](0);
+          case 9:
+            _context.prev = 9;
+            _context.t0 = _context["catch"](2);
             (0, _alerts.showAlert)('error', _context.t0.response.data.message);
 
-          case 10:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[2, 9]]);
   }));
 
   return function uploadProof(_x) {
@@ -12383,7 +12385,7 @@ var colorSelect = document.getElementById('color');
 var filenameField = document.getElementById('namefile');
 var copiesField = document.getElementById('copies');
 var pagesField = document.getElementById('pages');
-var previewImage, previewDefaultText, products;
+var previewImage, previewDefaultText, products, total;
 uploadFileForm && (0, _getProducts.getProducts)().then(function (res) {
   return products = res.data.data.data;
 });
@@ -12502,7 +12504,8 @@ if (uploadFileForm) uploadFileForm.addEventListener('submit', function (e) {
   form.append('copies', document.getElementById('copies').value);
   form.append('pickup', document.getElementById('pickup').value);
   form.append('orientation', document.getElementById('orientation').value);
-  form.append('color', document.getElementById('color').value); // form.append('status', document.getElementById('status').value);
+  form.append('color', document.getElementById('color').value);
+  form.append('totalPrice', total); // form.append('status', document.getElementById('status').value);
 
   (0, _uploadFile.uploadFile)(form, 'datafile');
 });
@@ -12510,7 +12513,7 @@ if (uploadProofBtn) uploadProofBtn.addEventListener('submit', function (e, value
   e.preventDefault();
   var form = new FormData();
   form.append('payment', document.getElementById('inpFile').files[0]);
-  form.append('paymode', document.querySelector('input[name="paymentmethod"]:checked').value);
+  form.append('paymentMethod', document.querySelector('input[name="paymentmethod"]:checked').value);
   (0, _payment.uploadProof)(form, 'ecash');
 });
 if (forgotPwBtn) forgotPwBtn.addEventListener('submit', function (e) {
@@ -12675,7 +12678,7 @@ var updatePrice = function updatePrice() {
   var product = products.find(function (product) {
     return product.type === type && product.name === size;
   });
-  var total = 0;
+  total = 0;
   var pricePerPage = 0;
 
   if (product) {
@@ -12716,7 +12719,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64289" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59080" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

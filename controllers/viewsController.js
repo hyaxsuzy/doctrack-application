@@ -2,9 +2,9 @@ const moment = require('moment');
 const File = require('../models/fileModel');
 const Proof = require('../models/proofModel');
 const User = require('../models/userModel');
+const Product = require('../models/prodModel');
 const catchAsync = require('../utils/catchAsync');
 const api = require('../utils/api');
-const Product = require('../models/prodModel');
 
 exports.getOverview = catchAsync(async (req, res) => {
   res
@@ -179,7 +179,9 @@ exports.addPrintFiles = (req, res) => {
 
 exports.proofPayment = async (req, res) => {
   const file = await File.findById(req.params.id);
-  const proof = await Proof.findById(req.params.id);
+  const product = await Product.findOne({ name: file.size, type: file.type });
+  file.price = product.price;
+
   res
     .status(200)
     .set(
@@ -188,15 +190,16 @@ exports.proofPayment = async (req, res) => {
     )
     .render('payment', {
       route: 'UPLOAD FILE',
-      file,
-      proof
+      file
     });
 };
 
 exports.getFileInfo = catchAsync(async (req, res) => {
   const file = await File.findById(req.params.id);
-  const proof = await Proof.findById(req.params.id);
-  const proofs = await Proof.find({ user: req.user._id });
+  const product = await Product.findOne({ name: file.size, type: file.type });
+  file.price = product.price;
+  const proof = await Proof.findOne({ file: file._id });
+  // const proofs = await Proof.find({ user: req.user._id });
   res
     .status(200)
     .set(
@@ -207,7 +210,7 @@ exports.getFileInfo = catchAsync(async (req, res) => {
       route: 'RECEIPT',
       file,
       proof,
-      proofs,
+      // proofs,
       moment: moment
     });
 });

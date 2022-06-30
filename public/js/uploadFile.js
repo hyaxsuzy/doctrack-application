@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { showAlert } from './alerts';
 
-export const uploadFile = async (datafile) => {
+export const uploadFile = async datafile => {
   try {
     const res = await axios({
       method: 'POST',
@@ -12,11 +12,11 @@ export const uploadFile = async (datafile) => {
 
     if (res.data.status === 'success') {
       showAlert('success', 'Proceed to payment');
-        window.setTimeout(() => {
-            location.assign('/payment-proof');
-        }, 1500);
+      window.setTimeout(() => {
+        location.assign(`/payment-proof/${res.data.data.data._id}`);
+      }, 1500);
     }
   } catch (err) {
-      showAlert('error', err.response.data.message);
+    showAlert('error', err.response.data.message);
   }
 };

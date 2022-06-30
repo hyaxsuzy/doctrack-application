@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(authController.protect);
 
 router.post(
-  '/uploadProof',
+  '/uploadProof/:id',
   payController.proofPhoto,
   payController.resizeProofPhoto,
   payController.proofPay,

@@ -40,7 +40,7 @@ const filenameField = document.getElementById('namefile');
 const copiesField = document.getElementById('copies');
 const pagesField = document.getElementById('pages');
 
-let previewImage, previewDefaultText, products;
+let previewImage, previewDefaultText, products, total;
 uploadFileForm && getProducts().then(res => (products = res.data.data.data));
 
 if (previewContainer) {
@@ -152,6 +152,7 @@ if (uploadFileForm)
     form.append('pickup', document.getElementById('pickup').value);
     form.append('orientation', document.getElementById('orientation').value);
     form.append('color', document.getElementById('color').value);
+    form.append('totalPrice', total);
     // form.append('status', document.getElementById('status').value);
     uploadFile(form, 'datafile');
   });
@@ -162,7 +163,7 @@ if (uploadProofBtn)
     const form = new FormData();
     form.append('payment', document.getElementById('inpFile').files[0]);
     form.append(
-      'paymode',
+      'paymentMethod',
       document.querySelector('input[name="paymentmethod"]:checked').value
     );
     uploadProof(form, 'ecash');
@@ -362,7 +363,7 @@ const updatePrice = () => {
     product => product.type === type && product.name === size
   );
 
-  let total = 0;
+  total = 0;
   let pricePerPage = 0;
   if (product) {
     pricePerPage =
