@@ -91,15 +91,23 @@ exports.getAuthentic = (req, res) => {
     .render('authen2');
 };
 
-exports.getPrices = (req, res) => {
+exports.getPrices = async (req, res) => {
+  const products = await Product.find();
+  const plainPapers = products.filter(product => product.type === 'plain');
+  const glossyPapers = products.filter(product => product.type === 'glossy');
+  const laserPapers = products.filter(product => product.type === 'laser');
+
   res
     .status(200)
     .set(
       'Content-Security-Policy',
-      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-9eGj6bfNPH74Zn6eO77uC1jgv53EP2Tqkz+mWCnh45k=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'unsafe-inline' 'unsafe-eval' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('prices', {
-      route: 'PRINT GUIDE'
+      route: 'PRINT GUIDE',
+      plainPapers,
+      glossyPapers,
+      laserPapers
     });
 };
 
@@ -217,8 +225,9 @@ exports.getFileInfo = catchAsync(async (req, res) => {
 
 exports.getFileInfo1 = catchAsync(async (req, res) => {
   const file = await File.findById(req.params.id);
-  const proof = await Proof.findById(req.params.id);
-  const proofs = await Proof.find({ user: req.user._id });
+  const product = await Product.findOne({ name: file.size, type: file.type });
+  file.price = product.price;
+  const proof = await Proof.findOne({ file: file._id });
   res
     .status(200)
     .set(
@@ -229,7 +238,7 @@ exports.getFileInfo1 = catchAsync(async (req, res) => {
       route: 'RECEIPT',
       file,
       proof,
-      proofs,
+      // proofs,
       moment: moment
     });
 });
@@ -242,7 +251,7 @@ exports.getViewproof = catchAsync(async (req, res) => {
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-9eGj6bfNPH74Zn6eO77uC1jgv53EP2Tqkz+mWCnh45k=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'unsafe-inline' 'unsafe-eval' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('viewproof', {
       route: 'PROOF OF PAYMENT',
@@ -387,17 +396,46 @@ exports.getProd = async (req, res) => {
 
 exports.getStats = catchAsync(async (req, res) => {
   const numFiles = await File.countDocuments();
-  const completed = await File.countDocuments({ status: 'Completed' });
+  const files = await File.find();
+  const plainFiles = files.filter(file => file.type === 'plain');
+  const glossyFiles = files.filter(file => file.type === 'glossy');
+  const laserFiles = files.filter(file => file.type === 'laser');
+  const typeArray = [
+    {
+      name: 'Plain Paper',
+      value: plainFiles.length
+    },
+    {
+      name: 'Glossy Paper',
+      value: glossyFiles.length
+    },
+    {
+      name: 'Laser Paper',
+      value: laserFiles.length
+    }
+  ];
+  typeArray.sort((a, b) => a.value - b.value);
+
+  const completed = files.filter(file => file.status === 'Completed');
+  const totalEarnings = completed.reduce((sum, file) => {
+    return sum + file.totalPrice;
+  }, 0);
+
   res
     .status(200)
     .set(
       'Content-Security-Policy',
-      "default-src 'self' https://*.jsdelivr.net https://unpkg.com https://*.fontawesome.com ;base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'sha256-9eGj6bfNPH74Zn6eO77uC1jgv53EP2Tqkz+mWCnh45k=' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
+      "base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src https://cdn.jsdelivr.net https://unpkg.com https://kit.fontawesome.com 'unsafe-inline' 'unsafe-eval' 'self' blob: ;script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests;"
     )
     .render('statistics', {
       route: 'STATISTICS',
       numFiles,
-      completed
+      completed,
+      plainFiles,
+      glossyFiles,
+      laserFiles,
+      typeArray,
+      totalEarnings
     });
 });
 

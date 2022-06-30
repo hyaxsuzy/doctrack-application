@@ -23,165 +23,59 @@ html
                     .price-title
                         h14.paperproducts Plain Bond Paper
                     div(class='box-container')
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/Letter.png')
-                            div(class='p-content')
-                                h5 Letter (Black and White)
-                                h6 PHP3.00
+                        each product in plainPapers
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name}.png`)
+                                div(class='p-content')
+                                    h5= `${product.name} (Black and White)`
+                                    h6= `Php ${product.price.toFixed(2)}`
                                 
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/Letterc.png')
-                            div(class='p-content')
-                                h5 Letter (Colored)
-                                h6 PHP5.00
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name}c.png`)
+                                div(class='p-content')
+                                    h5= `${product.name} (Colored)`
+                                    - const price = product.price + product.additional
+                                    h6= `Php ${price.toFixed(2)}`
 
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/legal.png')
-                            div(class='p-content')
-                                h5 Legal (Black and White)
-                                h6 PHP3.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/legalc.png')
-                            div(class='p-content')
-                                h5 Legal (Colored)
-                                h6 PHP5.00
-                        
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a4.png')
-                            div(class='p-content')
-                                h5 A4 (Black and White)
-                                h6 PHP3.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a4c.png')
-                            div(class='p-content')
-                                h5 A4 (Colored)
-                                h6 PHP5.00
-
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a5.png')
-                            div(class='p-content')
-                                h5 A5 (Black and White)
-                                h6 PHP3.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a5c.png')
-                            div(class='p-content')
-                                h5 A5 (Colored)
-                                h6 PHP5.00
-                        
                     .price-title
                         h14.paperproducts Glossy Paper
                     div(class='box-container')
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/Letter.png')
-                            div(class='p-content')
-                                h5 A6 (Black and White)
-                                h6 PHP7.00
+                        each product in glossyPapers
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name}.png`)
+                                div(class='p-content')
+                                    h5= `${product.name} (Black and White)`
+                                    h6= `Php ${product.price.toFixed(2)}`
                                 
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/Letterc.png')
-                            div(class='p-content')
-                                h5 A6 (Colored)
-                                h6 PHP12.00
-
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/legal.png')
-                            div(class='p-content')
-                                h5 A5 (Black and White)
-                                h6 PHP7.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/legalc.png')
-                            div(class='p-content')
-                                h5 A5 (Colored)
-                                h6 PHP12.00
-                        
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a4.png')
-                            div(class='p-content')
-                                h5 Letter (Black and White)
-                                h6 PHP7.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a4c.png')
-                            div(class='p-content')
-                                h5 Letter (Colored)
-                                h6 PHP12.00
-
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a5.png')
-                            div(class='p-content')
-                                h5 A4 (Black and White)
-                                h6 PHP7.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a5c.png')
-                            div(class='p-content')
-                                h5 A4 (Colored)
-                                h6 PHP12.00
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name}c.png`)
+                                div(class='p-content')
+                                    h5= `${product.name} (Colored)`
+                                    - const price = product.price + product.additional
+                                    h6= `Php ${price.toFixed(2)}`
 
                     .price-title
                         h14.paperproducts Laser Paper
                     div(class='box-container')
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/Letter.png')
-                            div(class='p-content')
-                                h5 A3 (Black and White)
-                                h6 PHP7.00
+                        each product in laserPapers
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name}.png`)
+                                div(class='p-content')
+                                    h5= `${product.name} (Black and White)`
+                                    h6= `Php ${product.price.toFixed(2)}`
                                 
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/Letterc.png')
-                            div(class='p-content')
-                                h5 A3 (Colored)
-                                h6 PHP12.00
-
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/legal.png')
-                            div(class='p-content')
-                                h5 A4 (Black and White)
-                                h6 PHP7.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/legalc.png')
-                            div(class='p-content')
-                                h5 A4 (Colored)
-                                h6 PHP12.00
-                        
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a4.png')
-                            div(class='p-content')
-                                h5 A5 (Black and White)
-                                h6 PHP7.00
-                                
-                        div(class='box')
-                            div(class='image')
-                                img(src='../img/a4c.png')
-                            div(class='p-content')
-                                h5 A5 (Colored)
-                                h6 PHP12.00
+                            div(class='box')
+                                div(class='image')
+                                    img(src=`../img/${product.name}c.png`)
+                                div(class='p-content')
+                                    h5= `${product.name} (Colored)`
+                                    - const price = product.price + product.additional
+                                    h6= `Php ${price.toFixed(2)}`
 
                         //- div(class='box')
                         //-     div(class='image')

@@ -40,7 +40,7 @@ html
                                                 i.fa-solid.fa-circle-check
                                             small(class="text-muted") Total number of orders completed
                                             div(class="middle")
-                                                h6.customers #{completed}
+                                                h6.customers= completed.length
 
                 .row.no-gutters
                     .col-md-5.no-gutters
@@ -52,7 +52,7 @@ html
                                             i.fa-solid.fa-scroll
                                         small(class="text-muted") Type of paper mostly ordered by the customers
                                         div(class="middle")
-                                            h6.topcustomers Bond Paper
+                                            h6.topcustomers= typeArray.reverse()[0].name
                     .col-md-7.no-gutters
                         .right
                             .ordercompstat
@@ -63,7 +63,7 @@ html
                                                 i.fa-solid.fa-wallet
                                             small(class="text-muted") As of today
                                             div(class="middle")
-                                                h6.topcustomers PHP500
+                                                h6.topcustomers= `Php ${totalEarnings.toFixed(2)}`
 
                 .row.no-gutters
                     .col-md-5.no-gutters
@@ -72,13 +72,13 @@ html
                             .col-12
                                 div.earning(class="chart" style="margin-left:20px;margin-top:60px;")
                                     h1.dashb Type of Paper
-                                    canvas(id='prodChart' width="400" height="233")
-                    .col-md-7.no-gutters
-                        .right
-                            div.earnings(class="charts" style="margin-top:-80px")
-                                div.earnings(class="chart")
-                                    h1.dashb Earnings this day
-                                    canvas(id='earnedChart' width="400" height="170")          
+                                    canvas(id='prodChart' width="400" height="233" data-typearray=typeArray)
+                    //- .col-md-7.no-gutters
+                    //-     .right
+                    //-         div.earnings(class="charts" style="margin-top:-80px")
+                    //-             div.earnings(class="chart")
+                    //-                 h1.dashb Earnings this day
+                    //-                 canvas(id='earnedChart' width="400" height="170")          
                 //- .row.no-gutters
                 //-     .col-md-5.no-gutters
                 //-         .left

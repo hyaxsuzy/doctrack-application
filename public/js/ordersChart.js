@@ -1,6 +1,7 @@
-const pending = parseInt(document.getElementById("numPending").textContent);
-const rejected = parseInt(document.getElementById("numRejected").textContent);
-const completed = parseInt(document.getElementById("numCompleted").textContent);
+/*eslint-disable*/
+const pending = parseInt(document.getElementById('numPending').textContent);
+const rejected = parseInt(document.getElementById('numRejected').textContent);
+const completed = parseInt(document.getElementById('numCompleted').textContent);
 
 const ctx = document.getElementById('lineChart').getContext('2d');
 const lineChart = new Chart(ctx, {

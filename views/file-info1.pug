@@ -74,11 +74,11 @@ html
                                 
 
                             .col-2
-                                h35#type.text1 #{file.type}
+                                h35#type.text1= `${file.type.slice(0, 1).toUpperCase()}${file.type.slice(1)} Paper`
                                 li
                                 h35#size.text1 #{file.size}
                                 li
-                                h35#side.text1 #{file.side}
+                                h35#side.text1= file.side === 'front' ? 'Front' : 'Front & Back'
                                 li
                                 h35#orientation.text1 #{file.orientation}
                                 li
@@ -94,7 +94,7 @@ html
                                     
 
                             .col-2
-                                h35.text1 #{file.color}
+                                h35.text1= file.color === 'b&w' ? 'Black & White' : 'Colored'
                                 li
                                 h35.text1 #{file.copies}
                                 li
@@ -127,20 +127,20 @@ html
                                                         th(class="w-20") Total
 
                                                     tr 
-                                                        td #{file.file}
-                                                        td 5
+                                                        td #{file.namefile}
+                                                        td= `Php ${file.price.toFixed(2)}`
                                                         td #{file.pages}
                                                         td x#{file.copies}
-                                                        td #{file.side}
-                                                        td Php 400
+                                                        td= file.side === 'front' ? 'Front' : 'Front & Back'
+                                                        td= `Php ${file.totalPrice.toFixed(2)}`
 
-                                                    tr 
-                                                        td(colspan="5") Total 
-                                                        td Php 400
+                                                    //- tr 
+                                                    //-     td(colspan="5") Total 
+                                                    //-     td Php 400
                         
                         ul
-                        each proof in proofs
-                            a(href=`/viewproof/${proof._id}` class="proofbutton" style="margin-left: 83.5%") Proof of Payment
+                        div(style="display: flex; justify-content: flex-end;")
+                            a(href=`/viewproof/${proof._id}` class="proofbutton" style="") Proof of Payment
                         li
                         a.back2(href='/documents' class='previous') &#8249; Back to Files
                         button.dl--btn.next(class='downloadinv' type='submit') Download
