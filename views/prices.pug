@@ -26,16 +26,16 @@ html
                         each product in plainPapers
                             div(class='box')
                                 div(class='image')
-                                    img(src=`../img/${product.name}.png`)
+                                    img(src=`../img/${product.name.toLowerCase()}.png`)
                                 div(class='p-content')
-                                    h5= `${product.name} (Black and White)`
+                                    h5= `${product.name.toLowerCase()} (Black and White)`
                                     h6= `Php ${product.price.toFixed(2)}`
                                 
                             div(class='box')
                                 div(class='image')
-                                    img(src=`../img/${product.name}c.png`)
+                                    img(src=`../img/${product.name.toLowerCase()}c.png`)
                                 div(class='p-content')
-                                    h5= `${product.name} (Colored)`
+                                    h5= `${product.name.toLowerCase()} (Colored)`
                                     - const price = product.price + product.additional
                                     h6= `Php ${price.toFixed(2)}`
 
@@ -45,16 +45,16 @@ html
                         each product in glossyPapers
                             div(class='box')
                                 div(class='image')
-                                    img(src=`../img/${product.name}.png`)
+                                    img(src=`../img/${product.name.toLowerCase()}.png`)
                                 div(class='p-content')
-                                    h5= `${product.name} (Black and White)`
+                                    h5= `${product.name.toLowerCase()} (Black and White)`
                                     h6= `Php ${product.price.toFixed(2)}`
                                 
                             div(class='box')
                                 div(class='image')
-                                    img(src=`../img/${product.name}c.png`)
+                                    img(src=`../img/${product.name.toLowerCase()}c.png`)
                                 div(class='p-content')
-                                    h5= `${product.name} (Colored)`
+                                    h5= `${product.name.toLowerCase()} (Colored)`
                                     - const price = product.price + product.additional
                                     h6= `Php ${price.toFixed(2)}`
 
@@ -64,16 +64,16 @@ html
                         each product in laserPapers
                             div(class='box')
                                 div(class='image')
-                                    img(src=`../img/${product.name}.png`)
+                                    img(src=`../img/${product.name.toLowerCase()}.png`)
                                 div(class='p-content')
-                                    h5= `${product.name} (Black and White)`
+                                    h5= `${product.name.toLowerCase()} (Black and White)`
                                     h6= `Php ${product.price.toFixed(2)}`
                                 
                             div(class='box')
                                 div(class='image')
-                                    img(src=`../img/${product.name}c.png`)
+                                    img(src=`../img/${product.name.toLowerCase()}c.png`)
                                 div(class='p-content')
-                                    h5= `${product.name} (Colored)`
+                                    h5= `${product.name.toLowerCase()} (Colored)`
                                     - const price = product.price + product.additional
                                     h6= `Php ${price.toFixed(2)}`
 
