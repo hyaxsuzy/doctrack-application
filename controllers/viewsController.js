@@ -321,7 +321,9 @@ exports.getVerif1 = async (req, res) => {
   try {
     await axios({
       method: 'GET',
-      url: `/api/v1/users/verify/${req.params.token}`
+      url: `${req.protocol}://${req.get('host')}/api/v1/users/verify/${
+        req.params.token
+      }`
     });
   } catch (err) {
     console.log(err);

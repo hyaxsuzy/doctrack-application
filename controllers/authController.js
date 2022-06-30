@@ -115,7 +115,12 @@ exports.verify = catchAsync(async (req, res, next) => {
   user.emailToken = undefined; // removes the value of the verification token of the user
   await user.save({ validateBeforeSave: false }); // saves user
 
-  createSendToken(user, 200, res); // logs the user in
+  res.status(200).json({
+    status: 'success',
+    message: 'Account successfully verified!'
+  });
+
+  // createSendToken(user, 200, res); // logs the user in
 });
 
 exports.protect = catchAsync(async (req, res, next) => {
