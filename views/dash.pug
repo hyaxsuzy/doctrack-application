@@ -109,7 +109,7 @@ html
                                                 div(class="middle")
                                                     h5 Completed 
                                                     small(class="text-muted") As of today
-                                                    h6.customers1(style="color: #A02525") #{completed}
+                                                    h6.customers1(id="numCompleted" style="color: #A02525") #{completed}
 
                                 .col-6
 
@@ -123,7 +123,7 @@ html
                                                 div(class="middle")
                                                     h5 Pending 
                                                     small(class="text-muted") As of today
-                                                    h6.customers1(style="color: #A02525") #{placed}
+                                                    h6.customers1(id="numPending" style="color: #A02525") #{placed}
 
                                         .col-9 
                                             class(type="Rejected")
@@ -131,7 +131,7 @@ html
                                                 div(class="middle")
                                                     h5 Rejected 
                                                     small(class="text-muted") As of today
-                                                    h6.customers1(style="color: #A02525") #{rejected}
+                                                    h6.customers1(id="numRejected" style="color: #A02525") #{rejected}
                     .col-md-8.no-gutters
                         .right
                             div.orderchart(class="charts")

@@ -1,3 +1,7 @@
+const pending = parseInt(document.getElementById("numPending").textContent);
+const rejected = parseInt(document.getElementById("numRejected").textContent);
+const completed = parseInt(document.getElementById("numCompleted").textContent);
+
 const ctx = document.getElementById('lineChart').getContext('2d');
 const lineChart = new Chart(ctx, {
   type: 'bar',
@@ -6,7 +10,8 @@ const lineChart = new Chart(ctx, {
     datasets: [
       {
         label: 'orders',
-        data: [0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
+        data: [completed, pending, rejected],
+        // data: [file.status, file.status, file.status],
         backgroundColor: 'rgb(153, 19, 19)',
         borderColor: 'rgb(143, 15, 15)',
         borderWidth: 1
