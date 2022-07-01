@@ -177,7 +177,7 @@ html
                                                                 span.badge.rounded-pill.bg-warning.text-dark= file.status
                                                             - else if (file.status === 'Completed')
                                                                 span.badge.rounded-pill.bg-success= file.status
-                                                        td.orders PHP50
+                                                        td= `Php ${file.totalPrice.toFixed(2)}`
                                                         td.orders
                                                             a.orderd(href=`/file-info1/${file._id}`) Receipt
                 //- .row.no-gutters
